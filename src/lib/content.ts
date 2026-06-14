@@ -281,9 +281,17 @@ export function getContent(lang: Lang) {
         "Algo ha fallado. Escríbeme directamente a " + EMAIL,
         "Something went wrong. Email me directly at " + EMAIL
       ),
-      invalid: L(
-        "Revisa los campos: nombre, un email válido y un mensaje.",
-        "Check the fields: name, a valid email and a message."
+      errName: L(
+        "Indica tu nombre — p. ej. «María López».",
+        "Enter your name — e.g. “Mary Smith”."
+      ),
+      errEmail: L(
+        "Email no válido — p. ej. «nombre@empresa.com».",
+        "Invalid email — e.g. “name@company.com”."
+      ),
+      errMessage: L(
+        "Cuéntame un poco más (mínimo 10 caracteres).",
+        "Tell me a bit more (at least 10 characters)."
       ),
     },
 

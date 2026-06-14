@@ -4,7 +4,8 @@ import { useState } from "react";
 import { Send } from "lucide-react";
 import type { Content } from "@/lib/content";
 
-type Status = "idle" | "sending" | "success" | "error" | "invalid";
+type Status = "idle" | "sending" | "success" | "error";
+type FieldErrors = { name?: string; email?: string; message?: string };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -14,18 +15,22 @@ export default function ContactForm({ t }: { t: Content["form"] }) {
   const [message, setMessage] = useState("");
   const [company, setCompany] = useState(""); // honeypot
   const [status, setStatus] = useState<Status>("idle");
+  const [errors, setErrors] = useState<FieldErrors>({});
 
-  const inputClass =
-    "w-full bg-transparent border border-line px-4 py-3 text-sm text-[#e8e4dd] placeholder:text-faint focus:border-accent focus:outline-none transition-colors";
+  function validate(): FieldErrors {
+    const e: FieldErrors = {};
+    if (name.trim().length < 2) e.name = t.errName;
+    if (!EMAIL_RE.test(email.trim())) e.email = t.errEmail;
+    if (message.trim().length < 10) e.message = t.errMessage;
+    return e;
+  }
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (
-      name.trim().length < 2 ||
-      !EMAIL_RE.test(email.trim()) ||
-      message.trim().length < 10
-    ) {
-      setStatus("invalid");
+  async function onSubmit(ev: React.FormEvent) {
+    ev.preventDefault();
+    const found = validate();
+    setErrors(found);
+    if (Object.keys(found).length > 0) {
+      setStatus("idle");
       return;
     }
 
@@ -46,6 +51,26 @@ export default function ContactForm({ t }: { t: Content["form"] }) {
     }
   }
 
+  // Clear a field's error as soon as the user edits it.
+  const clear = (field: keyof FieldErrors) =>
+    setErrors((e) => (e[field] ? { ...e, [field]: undefined } : e));
+
+  const base =
+    "w-full bg-transparent border px-4 py-3 text-sm text-[#e8e4dd] placeholder:text-faint focus:outline-none transition-colors";
+  const fieldClass = (hasError: boolean) =>
+    `${base} ${
+      hasError
+        ? "border-red-400/70 focus:border-red-400"
+        : "border-line focus:border-accent"
+    }`;
+
+  const ErrorMsg = ({ id, msg }: { id: string; msg?: string }) =>
+    msg ? (
+      <p id={id} className="text-xs text-red-400/90 mt-1.5">
+        {msg}
+      </p>
+    ) : null;
+
   return (
     <form onSubmit={onSubmit} className="space-y-4" noValidate>
       <div className="grid sm:grid-cols-2 gap-4">
@@ -57,11 +82,17 @@ export default function ContactForm({ t }: { t: Content["form"] }) {
             id="name"
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+              clear("name");
+            }}
             placeholder={t.namePlaceholder}
-            className={inputClass}
+            className={fieldClass(!!errors.name)}
             autoComplete="name"
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "err-name" : undefined}
           />
+          <ErrorMsg id="err-name" msg={errors.name} />
         </div>
         <div>
           <label htmlFor="email" className="sr-only">
@@ -71,11 +102,17 @@ export default function ContactForm({ t }: { t: Content["form"] }) {
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              clear("email");
+            }}
             placeholder={t.emailPlaceholder}
-            className={inputClass}
+            className={fieldClass(!!errors.email)}
             autoComplete="email"
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "err-email" : undefined}
           />
+          <ErrorMsg id="err-email" msg={errors.email} />
         </div>
       </div>
 
@@ -86,11 +123,17 @@ export default function ContactForm({ t }: { t: Content["form"] }) {
         <textarea
           id="message"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => {
+            setMessage(e.target.value);
+            clear("message");
+          }}
           placeholder={t.messagePlaceholder}
           rows={5}
-          className={`${inputClass} resize-y`}
+          className={`${fieldClass(!!errors.message)} resize-y`}
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? "err-message" : undefined}
         />
+        <ErrorMsg id="err-message" msg={errors.message} />
       </div>
 
       {/* Honeypot — hidden from real users */}
@@ -121,9 +164,6 @@ export default function ContactForm({ t }: { t: Content["form"] }) {
         )}
         {status === "error" && (
           <p className="text-sm text-red-400/90">{t.error}</p>
-        )}
-        {status === "invalid" && (
-          <p className="text-sm text-red-400/90">{t.invalid}</p>
         )}
       </div>
     </form>
