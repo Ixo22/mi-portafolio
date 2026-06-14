@@ -87,6 +87,7 @@ const PROJECTS = [
       "Motor de simulación probabilística de estrategias de carrera de F1. Arquitectura modular con servicios desacoplados, consumo de APIs REST externas con tipado estricto y procesamiento de grandes volúmenes de datos históricos para generar predicciones en tiempo real.",
     technologies: ["TypeScript", "REST APIs", "Arquitectura modular"],
     github: null as string | null,
+    demo: "https://f1nallap.netlify.app/",
   },
 ];
 
@@ -429,16 +430,29 @@ export default function Home() {
                           </span>
                         ))}
                       </div>
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm text-[#e8e4dd] link-underline inline-flex items-center gap-1.5"
-                        >
-                          <GitHubIcon size={15} /> Ver código
-                        </a>
-                      )}
+                      <div className="flex items-center gap-5">
+                        {project.demo && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-[#e8e4dd] link-underline inline-flex items-center gap-1.5"
+                          >
+                            Ver proyecto
+                            <ArrowUpRight size={15} />
+                          </a>
+                        )}
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-[#e8e4dd] link-underline inline-flex items-center gap-1.5"
+                          >
+                            <GitHubIcon size={15} /> Ver código
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
