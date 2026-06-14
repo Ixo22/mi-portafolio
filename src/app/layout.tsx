@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import { SITE_URL } from "@/lib/site";
+import { EMAIL, LINKEDIN_URL, GITHUB_URL } from "@/lib/content";
 import "./globals.css";
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000");
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,6 +56,31 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Alberto García Alcolado",
+  jobTitle: "Backend Developer",
+  email: `mailto:${EMAIL}`,
+  url: SITE_URL,
+  image: `${SITE_URL}/profile.jpg`,
+  sameAs: [LINKEDIN_URL, GITHUB_URL],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Madrid",
+    addressCountry: "ES",
+  },
+  knowsAbout: [
+    "Java",
+    "Microservicios",
+    "REST APIs",
+    "SQL Server",
+    "Sistemas distribuidos",
+    "Azure DevOps",
+  ],
+  knowsLanguage: ["es", "en"],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,7 +93,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0c0b0a] text-[#e8e4dd]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <LanguageProvider>{children}</LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
