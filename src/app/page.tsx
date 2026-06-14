@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
@@ -159,12 +160,14 @@ export default function Home() {
             <Reveal className="md:col-span-2 space-y-5 text-[#cfc9bf] text-lg leading-[1.75]">
               <figure className="float-right ml-6 mb-3 w-40 sm:w-48">
                 <div className="border border-line p-1.5">
-                  <img
+                  <Image
                     src="/profile.jpg"
                     alt="Alberto García Alcolado"
                     width={192}
                     height={240}
+                    sizes="(max-width: 640px) 160px, 192px"
                     className="w-full aspect-[4/5] object-cover object-top"
+                    priority
                   />
                 </div>
                 <figcaption className="text-faint text-xs font-mono mt-2.5 text-center">
@@ -320,7 +323,16 @@ export default function Home() {
                           </span>
                         ))}
                       </div>
-                      <div className="flex items-center gap-5">
+                      <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                        {project.caseStudy && (
+                          <a
+                            href={project.caseStudy}
+                            className="text-sm text-accent link-underline inline-flex items-center gap-1.5"
+                          >
+                            {c.projects.viewCase}
+                            <ArrowUpRight size={15} />
+                          </a>
+                        )}
                         {project.demo && (
                           <a
                             href={project.demo}

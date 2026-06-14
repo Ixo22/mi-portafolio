@@ -13,11 +13,11 @@ export default function Navbar() {
   const [active, setActive] = useState("inicio");
 
   const links = [
-    { href: "#sobre-mi", label: c.nav.about, id: "sobre-mi" },
-    { href: "#metodo", label: c.nav.method, id: "metodo" },
-    { href: "#experiencia", label: c.nav.experience, id: "experiencia" },
-    { href: "#proyectos", label: c.nav.projects, id: "proyectos" },
-    { href: "#contacto", label: c.nav.contact, id: "contacto" },
+    { href: "/#sobre-mi", label: c.nav.about, id: "sobre-mi" },
+    { href: "/#metodo", label: c.nav.method, id: "metodo" },
+    { href: "/#experiencia", label: c.nav.experience, id: "experiencia" },
+    { href: "/#proyectos", label: c.nav.projects, id: "proyectos" },
+    { href: "/#contacto", label: c.nav.contact, id: "contacto" },
   ];
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function Navbar() {
     >
       <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
         <a
-          href="#inicio"
+          href="/"
           className="font-serif text-lg text-[#e8e4dd] hover:text-accent transition-colors"
         >
           Alberto García

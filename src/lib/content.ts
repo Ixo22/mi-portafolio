@@ -202,6 +202,7 @@ export function getContent(lang: Lang) {
       ),
       viewProject: L("Ver proyecto", "View project"),
       viewCode: L("Ver código", "View code"),
+      viewCase: L("Caso de estudio", "Case study"),
       items: [
         {
           name: "F1nalLap",
@@ -216,8 +217,9 @@ export function getContent(lang: Lang) {
             "REST APIs",
             L("Arquitectura modular", "Modular architecture"),
           ],
-          github: null as string | null,
+          github: "https://github.com/Ixo22/F1nalLap",
           demo: "https://f1nallap.netlify.app/",
+          caseStudy: "/proyectos/f1nallap",
         },
       ],
     },
@@ -301,6 +303,120 @@ export function getContent(lang: Lang) {
         "Cuéntame un poco más (mínimo 10 caracteres).",
         "Tell me a bit more (at least 10 characters)."
       ),
+    },
+
+    caseStudy: {
+      back: L("Volver al inicio", "Back to home"),
+      kicker: L("Caso de estudio", "Case study"),
+      title: "F1nalLap",
+      subtitle: L(
+        "Motor de simulación probabilística de estrategias de carrera de F1.",
+        "A probabilistic simulation engine for F1 race strategies."
+      ),
+      meta: {
+        role: { label: L("Rol", "Role"), value: L("Desarrollo completo (TFG)", "Sole developer (Final Project)") },
+        year: { label: L("Año", "Year"), value: "2025" },
+        stack: { label: "Stack", value: "TypeScript · REST APIs" },
+      },
+      repoLabel: L("Ver código", "View code"),
+      demoLabel: L("Ver demo", "Live demo"),
+      sections: {
+        overview: {
+          heading: L("Resumen", "Overview"),
+          body: L(
+            [
+              "F1nalLap es mi Trabajo de Fin de Grado: una aplicación que ofrece a los aficionados de la Fórmula 1 información en tiempo real y simulaciones de estrategia de carrera. Bajo la superficie es un motor de simulación probabilística que consume datos históricos y en vivo desde APIs REST externas y los procesa con una arquitectura modular en TypeScript.",
+              "Quise tratarlo como un sistema de verdad, no como un proyecto de clase: tipado estricto, servicios desacoplados y separación clara entre la obtención de datos, la lógica de simulación y la presentación.",
+            ],
+            [
+              "F1nalLap is my Final Degree Project: an app that gives Formula 1 fans real-time information and race-strategy simulations. Under the hood it's a probabilistic simulation engine that consumes historical and live data from external REST APIs and processes it through a modular TypeScript architecture.",
+              "I treated it as a real system, not a class assignment: strict typing, decoupled services and a clear separation between data fetching, simulation logic and presentation.",
+            ]
+          ),
+        },
+        problem: {
+          heading: L("El reto", "The challenge"),
+          body: L(
+            [
+              "Los datos de Fórmula 1 viven repartidos en varias APIs externas, con formatos distintos, huecos y latencias que no controlo. El reto no era \"pintar datos\": era construir un sistema que siguiera dando una respuesta coherente aunque la fuente fallara, llegara incompleta o cambiara de forma.",
+              "Y por encima, generar una simulación de estrategia que fuera creíble a partir de grandes volúmenes de datos históricos, sin que la app se volviera lenta o inconsistente.",
+            ],
+            [
+              "Formula 1 data lives across several external APIs, with different formats, gaps and latencies I don't control. The challenge wasn't \"rendering data\": it was building a system that kept giving a coherent answer even when a source failed, arrived incomplete or changed shape.",
+              "On top of that, generating a believable strategy simulation from large volumes of historical data, without the app becoming slow or inconsistent.",
+            ]
+          ),
+        },
+        architecture: {
+          heading: L("Arquitectura y decisiones", "Architecture & decisions"),
+          intro: L(
+            "Estructuré el proyecto en módulos desacoplados para aislar cada responsabilidad:",
+            "I structured the project into decoupled modules to isolate each responsibility:"
+          ),
+          points: L(
+            [
+              "Capa de acceso a datos que encapsula cada API externa detrás de una interfaz tipada, para que el resto del sistema no dependa de su formato concreto.",
+              "Tipado estricto de extremo a extremo en TypeScript: los datos externos se validan y normalizan antes de entrar en la lógica de negocio.",
+              "Motor de simulación independiente de la fuente de datos y de la UI, lo que permite probarlo de forma aislada.",
+              "Procesamiento de datos históricos separado del flujo en tiempo real para no penalizar la respuesta del usuario.",
+            ],
+            [
+              "A data-access layer that wraps each external API behind a typed interface, so the rest of the system doesn't depend on its concrete format.",
+              "End-to-end strict typing in TypeScript: external data is validated and normalized before entering the business logic.",
+              "A simulation engine independent of the data source and the UI, which makes it testable in isolation.",
+              "Historical-data processing separated from the real-time flow so it doesn't penalize the user's response time.",
+            ]
+          ),
+        },
+        challenges: {
+          heading: L("Dificultades y aprendizajes", "Difficulties & lessons"),
+          intro: L(
+            "Estas son las partes que de verdad me hicieron crecer como desarrollador:",
+            "These are the parts that genuinely made me grow as a developer:"
+          ),
+          items: L(
+            [
+              {
+                title: "Datos externos poco fiables",
+                body: "Las APIs no siempre devolvían lo esperado: campos ausentes, formatos cambiantes y caídas puntuales. Aprendí a no confiar nunca en la forma del dato externo y a normalizar y validar todo en la frontera del sistema.",
+              },
+              {
+                title: "Mantener la coherencia en tiempo real",
+                body: "Coordinar datos en vivo con el procesamiento histórico sin bloqueos ni estados inconsistentes me obligó a pensar con cuidado el flujo asíncrono y el manejo de errores.",
+              },
+              {
+                title: "Domar la complejidad con tipos",
+                body: "A medida que crecía, el tipado estricto pasó de ser una exigencia a ser mi red de seguridad: refactorizar dejó de dar miedo.",
+              },
+            ],
+            [
+              {
+                title: "Unreliable external data",
+                body: "The APIs didn't always return what I expected: missing fields, shifting formats and occasional outages. I learned never to trust the shape of external data and to normalize and validate everything at the system boundary.",
+              },
+              {
+                title: "Keeping real-time coherence",
+                body: "Coordinating live data with historical processing without blocking or inconsistent state forced me to think carefully about async flow and error handling.",
+              },
+              {
+                title: "Taming complexity with types",
+                body: "As it grew, strict typing went from a requirement to my safety net: refactoring stopped being scary.",
+              },
+            ]
+          ),
+          note: L(
+            "Iré ampliando esta sección con los problemas concretos que fui resolviendo durante el desarrollo.",
+            "I'll keep expanding this section with the specific problems I solved during development."
+          ),
+        },
+        outcome: {
+          heading: L("Resultado", "Outcome"),
+          body: L(
+            "F1nalLap terminó siendo un sistema desplegado y funcional que defendí como Trabajo de Fin de Grado. Más allá de la nota, me dejó algo más valioso: la convicción de que la calidad del dato y diseñar pensando en el fallo no son lujos, sino la base de cualquier cosa que merezca la pena construir.",
+            "F1nalLap ended up as a deployed, working system that I defended as my Final Degree Project. Beyond the grade, it left me something more valuable: the conviction that data quality and designing for failure aren't luxuries, but the foundation of anything worth building."
+          ),
+        },
+      },
     },
 
     footer: L(
