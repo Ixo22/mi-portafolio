@@ -1,19 +1,24 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-const NAV_LINKS = [
-  { href: "#sobre-mi", label: "Sobre mí", id: "sobre-mi" },
-  { href: "#metodo", label: "Cómo trabajo", id: "metodo" },
-  { href: "#experiencia", label: "Experiencia", id: "experiencia" },
-  { href: "#proyectos", label: "Proyectos", id: "proyectos" },
-  { href: "#contacto", label: "Contacto", id: "contacto" },
-];
+import { useLanguage } from "@/components/LanguageProvider";
+import LanguageToggle from "@/components/LanguageToggle";
+import { getContent } from "@/lib/content";
 
 export default function Navbar() {
+  const { lang } = useLanguage();
+  const c = getContent(lang);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("inicio");
+
+  const links = [
+    { href: "#sobre-mi", label: c.nav.about, id: "sobre-mi" },
+    { href: "#metodo", label: c.nav.method, id: "metodo" },
+    { href: "#experiencia", label: c.nav.experience, id: "experiencia" },
+    { href: "#proyectos", label: c.nav.projects, id: "proyectos" },
+    { href: "#contacto", label: c.nav.contact, id: "contacto" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -22,7 +27,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const ids = ["inicio", ...NAV_LINKS.map((l) => l.id)];
+    const ids = ["inicio", "sobre-mi", "metodo", "experiencia", "proyectos", "contacto"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -56,7 +61,7 @@ export default function Navbar() {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-7">
-          {NAV_LINKS.map((link) => (
+          {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -75,44 +80,48 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="text-sm text-[#e8e4dd] border border-line px-3.5 py-1.5 hover:border-accent hover:text-accent transition-colors"
           >
-            CV
+            {c.nav.cv}
           </a>
+          <LanguageToggle />
         </div>
 
         {/* Mobile */}
-        <button
-          className="md:hidden text-muted hover:text-[#e8e4dd] transition-colors"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
+        <div className="md:hidden flex items-center gap-3">
+          <LanguageToggle />
+          <button
+            className="text-muted hover:text-[#e8e4dd] transition-colors"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
-            {menuOpen ? (
-              <>
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </>
-            ) : (
-              <>
-                <line x1="4" y1="9" x2="20" y2="9" />
-                <line x1="4" y1="15" x2="20" y2="15" />
-              </>
-            )}
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            >
+              {menuOpen ? (
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </>
+              ) : (
+                <>
+                  <line x1="4" y1="9" x2="20" y2="9" />
+                  <line x1="4" y1="15" x2="20" y2="15" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {menuOpen && (
         <div className="md:hidden border-t border-line px-6 py-5 flex flex-col gap-4 bg-[#0c0b0a]/95 backdrop-blur-md">
-          {NAV_LINKS.map((link) => (
+          {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -131,7 +140,7 @@ export default function Navbar() {
             className="text-sm text-[#e8e4dd] border border-line px-3.5 py-2 text-center hover:border-accent transition-colors"
             onClick={() => setMenuOpen(false)}
           >
-            Descargar CV
+            {c.nav.cv}
           </a>
         </div>
       )}

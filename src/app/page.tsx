@@ -1,106 +1,17 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
+import ContactForm from "@/components/ContactForm";
+import { useLanguage } from "@/components/LanguageProvider";
+import {
+  getContent,
+  EMAIL,
+  LINKEDIN_URL,
+  GITHUB_URL,
+  PHONE,
+} from "@/lib/content";
 import { Mail, Phone, MapPin, ArrowUpRight, ArrowDown } from "lucide-react";
-
-const EMAIL = "aga.alberto.st@gmail.com";
-const LINKEDIN_URL = "https://linkedin.com/in/aalbeerto";
-const GITHUB_URL = "https://github.com/ixo22";
-const PHONE = "+34 646 26 13 09";
-
-const PRINCIPLES = [
-  {
-    n: "01",
-    title: "El dato es sagrado",
-    body: "En seguros, un registro duplicado o mal modelado no es un bug menor: rompe el reporting, falsea el riesgo y te lleva por delante en una auditoría. Diseñé una estrategia Golden Record precisamente para que eso no pase. Trazabilidad y calidad del dato antes que velocidad.",
-  },
-  {
-    n: "02",
-    title: "Diseño para el fallo, no para el camino feliz",
-    body: "Una API que solo funciona con datos perfectos no sirve en producción. Valido esquemas con dureza, contemplo los edge cases y pruebo los flujos asíncronos de extremo a extremo. Prefiero que el sistema falle de forma controlada a que falle por sorpresa a las 3 de la mañana.",
-  },
-  {
-    n: "03",
-    title: "Si no se mide, no existe",
-    body: "Monté monitorización con Elasticsearch y KPIs automatizados en Power BI sobre consultas optimizadas. Quiero ver cómo se comporta lo que despliego, detectar incidencias antes que el negocio y poder responder con datos, no con intuiciones.",
-  },
-  {
-    n: "04",
-    title: "Aprendo en serio, no por moda",
-    body: "Soy backend de raíz, pero no me escondo detrás de la API. Este portfolio lo construí con Next.js y TypeScript desde cero para entender el stack completo. Cuando algo me hace falta para hacer mejor mi trabajo, lo aprendo a fondo.",
-  },
-];
-
-const EXPERIENCE = [
-  {
-    company: "MetLife",
-    role: "Developer TI — IT App Development",
-    period: "Sep 2024 – Presente",
-    location: "Madrid",
-    current: true,
-    lead: "Aplicaciones corporativas críticas del sector seguros, en producción y bajo carga real.",
-    points: [
-      "Reduje los tiempos de respuesta de aplicaciones críticas reescribiendo lógica de negocio en Java y optimizando el procesamiento de eventos asíncronos en arquitectura de microservicios.",
-      "Diseñé y desplegué APIs REST con validación estricta de esquemas y gestión de edge cases, reduciendo los fallos de integración entre servicios.",
-      "Garanticé la consistencia del intercambio asíncrono entre servicios distribuidos con pruebas E2E, incluyendo flujos con comportamiento equivalente a brokers de mensajería.",
-      "Definí KPIs automatizados en Power BI sobre SQL Server y monté monitorización con Elasticsearch, reduciendo el tiempo de detección de incidencias.",
-    ],
-    stack: ["Java", "Microservicios", "REST", "SQL Server", "Azure DevOps", "Elasticsearch"],
-    sub: "Empecé en prácticas (Sep 2024) y pasé a Developer TI en Feb 2026.",
-  },
-  {
-    company: "NFQ Advisory",
-    role: "Associate — Datos & Cumplimiento Normativo",
-    period: "Oct 2025 – Feb 2026",
-    location: "Madrid",
-    current: false,
-    lead: "Proyecto de datos y compliance para el sector seguros.",
-    points: [
-      "Diseñé una estrategia Golden Record para unificar grandes volúmenes de datos críticos, reduciendo duplicidades y mejorando la calidad del dato para gestión de riesgos y reporting.",
-      "Optimicé pipelines ETL en SQL Server con scripts avanzados en Python, recortando los tiempos de carga en procesos batch críticos del módulo de Siniestros.",
-      "Modelé arquitecturas de datos orientadas a cumplimiento normativo, preparadas para volúmenes propios de Big Data financiero.",
-    ],
-    stack: ["Python", "SQL Server", "ETL", "Golden Record", "Big Data"],
-    sub: null,
-  },
-  {
-    company: "KNAPP Ibérica",
-    role: "Software Commissioning Engineer",
-    period: "Ago 2025 – Sep 2025",
-    location: "Graz, Austria",
-    current: false,
-    lead: "Automatización de sistemas en un proyecto internacional de alta exigencia.",
-    points: [
-      "Desarrollé scripts de automatización en Python y Java para la sincronización lógica de sistemas en tiempo real.",
-      "Optimicé consultas SQL complejas y administré procesos en servidor Linux para garantizar la trazabilidad de los datos de almacenamiento.",
-    ],
-    stack: ["Python", "Java", "SQL", "Linux"],
-    sub: null,
-  },
-];
-
-const PROJECTS = [
-  {
-    name: "F1nalLap",
-    period: "2025",
-    tag: "Trabajo de Fin de Grado",
-    description:
-      "Motor de simulación probabilística de estrategias de carrera de F1. Arquitectura modular con servicios desacoplados, consumo de APIs REST externas con tipado estricto y procesamiento de grandes volúmenes de datos históricos para generar predicciones en tiempo real.",
-    technologies: ["TypeScript", "REST APIs", "Arquitectura modular"],
-    github: null as string | null,
-    demo: "https://f1nallap.netlify.app/",
-  },
-];
-
-const SKILLS = [
-  { group: "Lenguajes", items: ["Java", "Python", "TypeScript", "SQL"] },
-  {
-    group: "Arquitectura",
-    items: ["Microservicios", "REST APIs", "Sistemas distribuidos", "Mensajería asíncrona"],
-  },
-  { group: "Datos", items: ["SQL Server", "MySQL", "MongoDB", "ETL", "Power BI", "Elasticsearch"] },
-  { group: "DevOps", items: ["Azure DevOps", "Git", "Docker", "Linux"] },
-  { group: "Aprendiendo", items: ["Next.js", "React", "Tailwind CSS"] },
-];
 
 function GitHubIcon({ size = 18 }: { size?: number }) {
   return (
@@ -153,6 +64,9 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 }
 
 export default function Home() {
+  const { lang } = useLanguage();
+  const c = getContent(lang);
+
   return (
     <div className="relative z-10 font-sans">
       <Navbar />
@@ -166,24 +80,21 @@ export default function Home() {
           <Reveal>
             <p className="font-mono text-sm text-accent mb-6 flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-accent" />
-              Backend Developer · Madrid, España
+              {c.hero.badge}
             </p>
           </Reveal>
 
           <Reveal delay={100}>
             <h1 className="font-serif text-[2.6rem] leading-[1.08] sm:text-6xl md:text-[4.2rem] text-[#f3f0ea] tracking-[-0.02em] mb-8">
-              Construyo el backend que{" "}
-              <span className="italic text-accent">no se puede permitir</span>{" "}
-              fallar.
+              {c.hero.h1a}
+              <span className="italic text-accent">{c.hero.h1accent}</span>
+              {c.hero.h1b}
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
             <p className="text-lg md:text-xl text-muted leading-relaxed max-w-2xl mb-10">
-              Soy Alberto García. Diseño microservicios en Java y arquitecturas de
-              datos para el sector seguros — donde un dato mal procesado cuesta
-              dinero y rompe el compliance. Llevo más de un año haciéndolo en
-              producción para una aseguradora global.
+              {c.hero.intro}
             </p>
           </Reveal>
 
@@ -193,7 +104,7 @@ export default function Home() {
                 href="#contacto"
                 className="group inline-flex items-center gap-2 bg-[#e8e4dd] text-[#0c0b0a] px-6 py-3 text-sm font-medium hover:bg-accent transition-colors"
               >
-                Hablemos
+                {c.hero.cta}
                 <ArrowUpRight
                   size={16}
                   className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
@@ -235,14 +146,14 @@ export default function Home() {
               className="mt-24 inline-flex items-center gap-2 text-faint hover:text-muted text-xs font-mono uppercase tracking-widest transition-colors"
             >
               <ArrowDown size={14} className="animate-bounce" />
-              Sigue leyendo
+              {c.hero.scroll}
             </a>
           </Reveal>
         </header>
 
         {/* ─── SOBRE MÍ ─────────────────────────────────────────── */}
         <section id="sobre-mi" className="py-24 scroll-mt-20">
-          <Eyebrow>Sobre mí</Eyebrow>
+          <Eyebrow>{c.about.eyebrow}</Eyebrow>
 
           <div className="grid md:grid-cols-3 gap-12">
             <Reveal className="md:col-span-2 space-y-5 text-[#cfc9bf] text-lg leading-[1.75]">
@@ -257,44 +168,29 @@ export default function Home() {
                   />
                 </div>
                 <figcaption className="text-faint text-xs font-mono mt-2.5 text-center">
-                  Alberto García · Madrid
+                  {c.about.caption}
                 </figcaption>
               </figure>
               <p>
-                No llegué a la programación por las modas, sino por lo que la
-                buena ingeniería <em className="text-[#e8e4dd] not-italic font-medium">sostiene</em>:
-                sistemas que mueven datos sensibles de millones de pólizas y que
-                tienen que seguir en pie cuando más se les necesita.
+                {c.about.p1a}
+                <em className="text-[#e8e4dd] not-italic font-medium">
+                  {c.about.p1em}
+                </em>
+                {c.about.p1b}
               </p>
               <p>
-                Mi terreno es el <span className="text-accent">backend en Java</span>:
-                microservicios, APIs REST robustas, flujos asíncronos entre
-                servicios distribuidos y arquitecturas de datos pensadas para
-                compliance normativo. He trabajado en MetLife y NFQ en proyectos
-                reales del sector seguros, y en un proyecto internacional para
-                KNAPP en Graz, Austria.
+                {c.about.p2a}
+                <span className="text-accent">{c.about.p2accent}</span>
+                {c.about.p2b}
               </p>
-              <p>
-                Lo que me diferencia no es saber muchas tecnologías, sino entender
-                por qué importan. Me obsesiona la calidad del dato, diseñar para
-                el fallo y medir lo que despliego. Y aunque soy backend de raíz,
-                estoy ampliando hacia full stack — este sitio es la prueba, no una
-                promesa.
-              </p>
+              <p>{c.about.p3}</p>
               <p className="font-serif text-xl text-[#e8e4dd] italic pt-2">
-                — Alberto García Alcolado
+                {c.about.signature}
               </p>
             </Reveal>
 
             <Reveal delay={150} className="space-y-px text-sm font-mono">
-              {[
-                ["Rol actual", "Developer TI"],
-                ["Empresa", "MetLife"],
-                ["Ubicación", "Madrid, ES"],
-                ["Inglés", "B2 · EOI"],
-                ["Formación", "Ing. Informática"],
-                ["Disponibilidad", "Abierto"],
-              ].map(([k, v]) => (
+              {c.about.facts.map(([k, v]) => (
                 <div
                   key={k}
                   className="flex justify-between gap-4 py-3 border-b border-line"
@@ -309,15 +205,15 @@ export default function Home() {
 
         {/* ─── CÓMO TRABAJO ─────────────────────────────────────── */}
         <section id="metodo" className="py-24 scroll-mt-20">
-          <Eyebrow>Cómo trabajo</Eyebrow>
+          <Eyebrow>{c.method.eyebrow}</Eyebrow>
           <Reveal>
             <h2 className="font-serif text-3xl md:text-4xl text-[#f3f0ea] tracking-[-0.02em] mb-14 max-w-2xl">
-              Cuatro cosas en las que no cedo.
+              {c.method.heading}
             </h2>
           </Reveal>
 
           <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
-            {PRINCIPLES.map((p, i) => (
+            {c.method.principles.map((p, i) => (
               <Reveal key={p.n} delay={(i % 2) * 120}>
                 <div className="group">
                   <div className="flex items-baseline gap-4 mb-3">
@@ -335,10 +231,10 @@ export default function Home() {
 
         {/* ─── EXPERIENCIA ──────────────────────────────────────── */}
         <section id="experiencia" className="py-24 scroll-mt-20">
-          <Eyebrow>Experiencia</Eyebrow>
+          <Eyebrow>{c.experience.eyebrow}</Eyebrow>
 
           <div className="space-y-px">
-            {EXPERIENCE.map((exp, i) => (
+            {c.experience.items.map((exp, i) => (
               <Reveal key={exp.company} delay={i * 80}>
                 <div className="grid md:grid-cols-12 gap-4 md:gap-8 py-10 border-t border-line">
                   <div className="md:col-span-4">
@@ -348,7 +244,7 @@ export default function Home() {
                       </h3>
                       {exp.current && (
                         <span className="text-[10px] font-mono uppercase tracking-wider text-accent border border-accent/40 px-1.5 py-0.5">
-                          Ahora
+                          {c.experience.now}
                         </span>
                       )}
                     </div>
@@ -381,10 +277,7 @@ export default function Home() {
                     )}
                     <div className="flex flex-wrap gap-x-4 gap-y-1.5">
                       {exp.stack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-xs font-mono text-faint"
-                        >
+                        <span key={tech} className="text-xs font-mono text-faint">
                           {tech}
                         </span>
                       ))}
@@ -398,10 +291,10 @@ export default function Home() {
 
         {/* ─── PROYECTOS ────────────────────────────────────────── */}
         <section id="proyectos" className="py-24 scroll-mt-20">
-          <Eyebrow>Proyectos</Eyebrow>
+          <Eyebrow>{c.projects.eyebrow}</Eyebrow>
 
           <div className="space-y-px">
-            {PROJECTS.map((project, i) => (
+            {c.projects.items.map((project, i) => (
               <Reveal key={project.name} delay={i * 80}>
                 <div className="grid md:grid-cols-12 gap-4 md:gap-8 py-10 border-t border-line">
                   <div className="md:col-span-4">
@@ -422,10 +315,7 @@ export default function Home() {
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 justify-between">
                       <div className="flex flex-wrap gap-x-4 gap-y-1.5">
                         {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="text-xs font-mono text-faint"
-                          >
+                          <span key={tech} className="text-xs font-mono text-faint">
                             {tech}
                           </span>
                         ))}
@@ -438,7 +328,7 @@ export default function Home() {
                             rel="noopener noreferrer"
                             className="text-sm text-[#e8e4dd] link-underline inline-flex items-center gap-1.5"
                           >
-                            Ver proyecto
+                            {c.projects.viewProject}
                             <ArrowUpRight size={15} />
                           </a>
                         )}
@@ -449,7 +339,7 @@ export default function Home() {
                             rel="noopener noreferrer"
                             className="text-sm text-[#e8e4dd] link-underline inline-flex items-center gap-1.5"
                           >
-                            <GitHubIcon size={15} /> Ver código
+                            <GitHubIcon size={15} /> {c.projects.viewCode}
                           </a>
                         )}
                       </div>
@@ -468,9 +358,7 @@ export default function Home() {
               >
                 <span className="flex items-center gap-3">
                   <GitHubIcon size={18} />
-                  <span className="text-sm">
-                    Más proyectos personales y experimentos en GitHub
-                  </span>
+                  <span className="text-sm">{c.projects.more}</span>
                 </span>
                 <ArrowUpRight
                   size={18}
@@ -481,11 +369,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── HABILIDADES ──────────────────────────────────────── */}
+        {/* ─── STACK ────────────────────────────────────────────── */}
         <section className="py-24">
-          <Eyebrow>Stack</Eyebrow>
+          <Eyebrow>{c.skills.eyebrow}</Eyebrow>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10">
-            {SKILLS.map((s, i) => (
+            {c.skills.groups.map((s, i) => (
               <Reveal key={s.group} delay={(i % 3) * 80}>
                 <h3 className="text-faint font-mono text-xs uppercase tracking-wider mb-3">
                   {s.group}
@@ -504,73 +392,67 @@ export default function Home() {
 
         {/* ─── CONTACTO ─────────────────────────────────────────── */}
         <section id="contacto" className="py-28 scroll-mt-20">
-          <Eyebrow>Contacto</Eyebrow>
+          <Eyebrow>{c.contact.eyebrow}</Eyebrow>
           <Reveal>
             <h2 className="font-serif text-4xl md:text-6xl text-[#f3f0ea] tracking-[-0.02em] leading-[1.05] mb-8 max-w-3xl">
-              ¿Buscas a alguien que se tome en serio el backend?
+              {c.contact.heading}
             </h2>
           </Reveal>
           <Reveal delay={120}>
             <p className="text-muted text-lg leading-relaxed max-w-2xl mb-12">
-              Estoy abierto a roles backend, arquitecturas distribuidas y
-              proyectos donde la calidad del dato y la fiabilidad importen de
-              verdad. Si crees que puedo aportar, escríbeme — respondo a todo.
+              {c.contact.intro}
             </p>
           </Reveal>
 
-          <Reveal delay={200}>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-5 mb-16">
-              <a
-                href={`mailto:${EMAIL}`}
-                className="group inline-flex items-center gap-2 bg-[#e8e4dd] text-[#0c0b0a] px-7 py-3.5 text-sm font-medium hover:bg-accent transition-colors"
-              >
-                <Mail size={16} />
-                Escríbeme un email
-              </a>
+          <div className="grid md:grid-cols-5 gap-12 items-start">
+            <Reveal delay={150} className="md:col-span-3">
+              <ContactForm t={c.form} />
+            </Reveal>
+
+            <Reveal delay={220} className="md:col-span-2 space-y-px">
               <a
                 href={LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#e8e4dd] link-underline inline-flex items-center gap-2 text-sm"
+                className="flex items-center gap-3 py-4 border-t border-line hover:border-accent text-[#e8e4dd] transition-colors"
               >
-                <LinkedInIcon size={16} /> Conecta en LinkedIn
+                <LinkedInIcon size={16} />
+                <span className="text-sm">{c.contact.linkedinBtn}</span>
               </a>
-            </div>
-          </Reveal>
-
-          <Reveal delay={250}>
-            <div className="grid sm:grid-cols-3 gap-px">
               {[
-                { icon: <Mail size={15} />, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
-                { icon: <Phone size={15} />, label: "Teléfono", value: PHONE, href: `tel:${PHONE}` },
-                { icon: <MapPin size={15} />, label: "Ubicación", value: "Madrid, España", href: null },
-              ].map((c) => {
+                { icon: <Mail size={15} />, label: c.contact.labels.email, value: EMAIL, href: `mailto:${EMAIL}` },
+                { icon: <Phone size={15} />, label: c.contact.labels.phone, value: PHONE, href: `tel:${PHONE}` },
+                { icon: <MapPin size={15} />, label: c.contact.labels.location, value: c.contact.labels.locationValue, href: null },
+              ].map((item) => {
                 const inner = (
                   <>
-                    <span className="flex items-center gap-2 text-faint text-xs font-mono uppercase tracking-wider mb-2">
-                      {c.icon} {c.label}
+                    <span className="flex items-center gap-2 text-faint text-xs font-mono uppercase tracking-wider mb-1">
+                      {item.icon} {item.label}
                     </span>
                     <span className="text-[#e8e4dd] text-sm block truncate">
-                      {c.value}
+                      {item.value}
                     </span>
                   </>
                 );
-                return c.href ? (
+                return item.href ? (
                   <a
-                    key={c.label}
-                    href={c.href}
-                    className="py-5 border-t border-line hover:border-accent transition-colors"
+                    key={item.label}
+                    href={item.href}
+                    className="block py-4 border-t border-line hover:border-accent transition-colors"
                   >
                     {inner}
                   </a>
                 ) : (
-                  <div key={c.label} className="py-5 border-t border-line">
+                  <div
+                    key={item.label}
+                    className="py-4 border-t border-b border-line"
+                  >
                     {inner}
                   </div>
                 );
               })}
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </section>
       </div>
 
@@ -578,7 +460,7 @@ export default function Home() {
       <footer className="border-t border-line">
         <div className="max-w-4xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-faint text-xs font-mono">
           <span>© {new Date().getFullYear()} Alberto García Alcolado</span>
-          <span>Construido a mano con Next.js &amp; Tailwind</span>
+          <span>{c.footer}</span>
         </div>
       </footer>
     </div>
