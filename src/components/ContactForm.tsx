@@ -16,6 +16,7 @@ export default function ContactForm({ t }: { t: Content["form"] }) {
   const [company, setCompany] = useState(""); // honeypot
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<FieldErrors>({});
+  const [serverMsg, setServerMsg] = useState(t.error);
 
   function validate(): FieldErrors {
     const e: FieldErrors = {};
@@ -41,12 +42,24 @@ export default function ContactForm({ t }: { t: Content["form"] }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, message, company }),
       });
-      if (!res.ok) throw new Error("request failed");
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setServerMsg(
+          data?.error === "not_configured"
+            ? t.errConfig
+            : data?.error === "send_failed"
+              ? t.errSend
+              : t.error
+        );
+        setStatus("error");
+        return;
+      }
       setStatus("success");
       setName("");
       setEmail("");
       setMessage("");
     } catch {
+      setServerMsg(t.error);
       setStatus("error");
     }
   }
@@ -163,7 +176,7 @@ export default function ContactForm({ t }: { t: Content["form"] }) {
           <p className="text-sm text-accent">{t.success}</p>
         )}
         {status === "error" && (
-          <p className="text-sm text-red-400/90">{t.error}</p>
+          <p className="text-sm text-red-400/90">{serverMsg}</p>
         )}
       </div>
     </form>

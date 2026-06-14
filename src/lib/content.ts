@@ -281,6 +281,14 @@ export function getContent(lang: Lang) {
         "Algo ha fallado. Escríbeme directamente a " + EMAIL,
         "Something went wrong. Email me directly at " + EMAIL
       ),
+      errConfig: L(
+        "El servicio de envío no está configurado. Escríbeme a " + EMAIL,
+        "The mail service isn't configured. Email me at " + EMAIL
+      ),
+      errSend: L(
+        "No se pudo enviar el mensaje. Escríbeme a " + EMAIL,
+        "The message couldn't be sent. Email me at " + EMAIL
+      ),
       errName: L(
         "Indica tu nombre — p. ej. «María López».",
         "Enter your name — e.g. “Mary Smith”."
