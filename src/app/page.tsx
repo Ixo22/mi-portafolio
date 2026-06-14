@@ -311,7 +311,7 @@ export default function Home() {
           <Eyebrow>Cómo trabajo</Eyebrow>
           <Reveal>
             <h2 className="font-serif text-3xl md:text-4xl text-[#f3f0ea] tracking-[-0.02em] mb-14 max-w-2xl">
-              Cuatro cosas en las que no transijo.
+              Cuatro cosas en las que no cedo.
             </h2>
           </Reveal>
 
