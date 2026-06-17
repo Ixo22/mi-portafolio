@@ -237,8 +237,8 @@ export function getContent(lang: Lang) {
             "Tailwind CSS",
           ],
           github: "https://github.com/Ixo22/plan-tracker",
-          demo: "https://plan-tracker-pink.vercel.app",
-          caseStudy: null,
+          demo: "https://plangrid.vercel.app/demo",
+          caseStudy: "/proyectos/plan-tracker",
         },
       ],
     },
@@ -433,6 +433,120 @@ export function getContent(lang: Lang) {
           body: L(
             "F1nalLap terminó siendo un sistema desplegado y funcional que defendí como Trabajo de Fin de Grado. Más allá de la nota, me dejó algo más valioso: la convicción de que la calidad del dato y diseñar pensando en el fallo no son lujos, sino la base de cualquier cosa que merezca la pena construir.",
             "F1nalLap ended up as a deployed, working system that I defended as my Final Degree Project. Beyond the grade, it left me something more valuable: the conviction that data quality and designing for failure aren't luxuries, but the foundation of anything worth building."
+          ),
+        },
+      },
+    },
+
+    planTrackerCaseStudy: {
+      back: L("Volver al inicio", "Back to home"),
+      kicker: L("Caso de estudio", "Case study"),
+      title: "Plan Tracker",
+      subtitle: L(
+        "Aplicación full stack para gestionar y programar actividades en pareja.",
+        "Full-stack app to manage and schedule couple activities."
+      ),
+      meta: {
+        role: { label: L("Rol", "Role"), value: L("Desarrollo completo", "Sole developer") },
+        year: { label: L("Año", "Year"), value: "2026" },
+        stack: { label: "Stack", value: "Next.js · Prisma · PostgreSQL" },
+      },
+      repoLabel: L("Ver código", "View code"),
+      demoLabel: L("Ver demo", "Live demo"),
+      sections: {
+        overview: {
+          heading: L("Resumen", "Overview"),
+          body: L(
+            [
+              "Plan Tracker nació de un problema real: tener buenas ideas de actividades en pareja pero sin ningún sistema para organizarlas y garantizar que se ejecutan. La app clasifica los planes en tres niveles de prioridad — diarios, intermedios y especiales — y lleva el control de cuánto tiempo ha pasado desde la última actividad ejecutada en cada nivel, avisando de cuándo toca el siguiente.",
+              "Decidí construirlo desde cero con un stack moderno para tener control total sobre la lógica de negocio y consolidar el ciclo completo de desarrollo full stack: diseño de base de datos, autenticación, API REST, UI reactiva y despliegue en producción.",
+            ],
+            [
+              "Plan Tracker was born from a real problem: having good ideas for couple activities but no system to organise them and make sure they actually happen. The app classifies plans into three priority tiers — daily, intermediate and special — and tracks how long it's been since the last activity at each level, signalling when the next one is due.",
+              "I built it from scratch with a modern stack to have full control over the business logic and to consolidate the complete full-stack development cycle: database design, authentication, REST API, reactive UI and production deployment.",
+            ]
+          ),
+        },
+        problem: {
+          heading: L("El reto", "The challenge"),
+          body: L(
+            [
+              "El problema no era «hacer una lista de planes». Era garantizar que los tres niveles de prioridad se respetaran a lo largo del tiempo: que los planes especiales no se posterguen indefinidamente, que los diarios no acaparen toda la atención y que el sistema funcione sin que nadie tenga que recordarlo manualmente.",
+              "Además, la aplicación tenía que ser multiusuario con roles diferenciados (admin y miembro), permitir que cualquiera proponga planes nuevos, y mantener el tracking de manera independiente para cada nivel sin que las operaciones de un usuario interfirieran con las del otro.",
+            ],
+            [
+              "The problem wasn't just making a list of plans. It was making sure the three priority tiers were respected over time: that special plans don't get postponed indefinitely, that daily plans don't take all the focus, and that the system works without anyone having to remember it manually.",
+              "On top of that, the app needed to be multi-user with distinct roles (admin and member), allow anyone to propose new plans, and track each level independently without one user's operations interfering with the other's.",
+            ]
+          ),
+        },
+        architecture: {
+          heading: L("Arquitectura y decisiones", "Architecture & decisions"),
+          intro: L(
+            "La aplicación se estructura en tres capas bien diferenciadas:",
+            "The application is structured around three clearly separated layers:"
+          ),
+          points: L(
+            [
+              "API REST con rutas de Next.js App Router separadas para planes, sugerencias y tracking. Cada ruta valida la sesión antes de devolver o modificar datos, con lógica de roles explícita en cada endpoint.",
+              "Modelo de datos en PostgreSQL con Prisma ORM: usuarios con roles (ADMIN/MEMBER), planes categorizados y un modelo de Tracking independiente por nivel que registra la última ejecución y calcula el próximo vencimiento.",
+              "Autenticación con NextAuth y sesiones persistentes. La redirección al login, al dashboard o al formulario de nuevo plan depende del rol y el estado de sesión desde el servidor.",
+              "UI dividida en componentes de responsabilidad única: PlanForm para crear, PlanInbox con filtros y ordenación múltiple, LevelCounters con contadores de días por nivel y SuggestionsBox para mostrar planes relevantes según prioridad.",
+            ],
+            [
+              "REST API with separate Next.js App Router routes for plans, suggestions and tracking. Each route validates the session before returning or modifying data, with explicit role logic in every endpoint.",
+              "PostgreSQL data model with Prisma ORM: users with roles (ADMIN/MEMBER), categorised plans, and an independent Tracking model per level that records the last execution and calculates the next due date.",
+              "Authentication with NextAuth and persistent sessions. Redirect to login, dashboard or new-plan form is resolved server-side based on role and session state.",
+              "UI split into single-responsibility components: PlanForm for creation, PlanInbox with multi-column filtering and sorting, LevelCounters with per-level day counters and SuggestionsBox showing relevant plans by priority.",
+            ]
+          ),
+        },
+        challenges: {
+          heading: L("Dificultades y aprendizajes", "Difficulties & lessons"),
+          intro: L(
+            "Estos fueron los puntos donde más tuve que pensar:",
+            "These were the points that required the most thought:"
+          ),
+          items: L(
+            [
+              {
+                title: "Lógica de scheduling por niveles",
+                body: "El modelo de Tracking no es un simple contador: almacena cuándo se ejecutó por última vez un plan de cada nivel y calcula los días restantes en función de un intervalo. Conseguir que esta lógica fuera coherente entre la base de datos y la UI, sin lecturas inconsistentes ni actualizaciones fantasma, fue el nudo técnico central del proyecto.",
+              },
+              {
+                title: "Autenticación con roles sin librerías de autorización",
+                body: "NextAuth gestiona la sesión pero la lógica de permisos (quién puede crear, editar o eliminar) la implementé explícitamente en cada ruta API. Garantizar que un miembro no ejecutara operaciones de admin, y que los errores fueran claros sin filtrar información, fue más delicado de lo que parece.",
+              },
+              {
+                title: "Estado local coherente con la base de datos",
+                body: "La bandeja de entrada tiene filtros, orden y asignación de niveles que modifican la lista localmente sin recargar la página. Mantener sincronía entre el estado React y lo que hay en base de datos, especialmente tras mutaciones concurrentes, me obligó a diseñar las actualizaciones con cuidado.",
+              },
+            ],
+            [
+              {
+                title: "Per-level scheduling logic",
+                body: "The Tracking model isn't a simple counter: it stores when a plan was last executed for each level and calculates the remaining days against a configured interval. Making this logic consistent between the database and the UI — without stale reads or ghost updates — was the central technical knot of the project.",
+              },
+              {
+                title: "Role-based auth without an authorisation library",
+                body: "NextAuth handles the session, but I implemented the permissions logic (who can create, edit or delete) explicitly in every API route. Making sure a member couldn't run admin operations, and that errors were informative without leaking information, was more delicate than it looks.",
+              },
+              {
+                title: "Local state in sync with the database",
+                body: "The inbox has filters, sorting and level assignment that update the list locally without reloading. Keeping the React state in sync with the database — especially after concurrent mutations — forced me to design updates carefully.",
+              },
+            ]
+          ),
+          note: L(
+            "Iré ampliando esta sección según el proyecto evolucione.",
+            "I'll keep expanding this section as the project evolves."
+          ),
+        },
+        outcome: {
+          heading: L("Resultado", "Outcome"),
+          body: L(
+            "Plan Tracker está en producción y en uso real. El resultado más valioso no fue el código sino comprobar que un modelo de datos bien diseñado puede resolver un problema de coordinación que antes dependía de la memoria o la improvisación. Este proyecto me consolidó en el desarrollo full stack y me reafirmó en algo que ya sabía del backend de empresa: los sistemas que importan de verdad son los que siguen funcionando cuando los datos son imperfectos y los usuarios no hacen lo que esperas.",
+            "Plan Tracker is in production and in real use. The most valuable result wasn't the code but proving that a well-designed data model can solve a coordination problem that previously relied on memory or improvisation. This project consolidated my full-stack skills and reinforced something I already knew from enterprise backend work: the systems that really matter are the ones that keep working when data is imperfect and users don't do what you expect."
           ),
         },
       },
