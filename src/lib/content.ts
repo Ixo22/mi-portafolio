@@ -226,8 +226,8 @@ export function getContent(lang: Lang) {
           period: "2026",
           tag: L("Proyecto personal", "Personal project"),
           description: L(
-            "Aplicación web full stack para gestionar y hacer seguimiento de planes personales. Autenticación con NextAuth, base de datos PostgreSQL gestionada con Prisma ORM, panel de control, bandeja de entrada, categorías y sistema de sugerencias. Desplegada en Vercel.",
-            "Full-stack web application to manage and track personal plans. NextAuth authentication, PostgreSQL database managed with Prisma ORM, dashboard, inbox, categories and a suggestions system. Deployed on Vercel."
+            "Aplicación colaborativa de planificación en grupo. Bandeja compartida donde cualquier miembro propone planes; el admin los organiza por prioridad en tres niveles (N1 diario, N2 escapada, N3 ocasión especial). Notificaciones por email cuando se acerca la fecha, categorías personalizables y página de demo pública.",
+            "Collaborative group planning app. A shared inbox where any member suggests plans; the admin organises them by priority across three tiers (N1 daily, N2 weekend getaway, N3 special occasion). Email notifications as dates approach, customisable categories and a public demo page."
           ),
           technologies: [
             "TypeScript",
@@ -443,8 +443,8 @@ export function getContent(lang: Lang) {
       kicker: L("Caso de estudio", "Case study"),
       title: "Plan Tracker",
       subtitle: L(
-        "Aplicación full stack para gestionar y programar actividades en pareja.",
-        "Full-stack app to manage and schedule couple activities."
+        "Aplicación colaborativa full stack para planificar y programar actividades en grupo.",
+        "Full-stack collaborative app to plan and schedule group activities."
       ),
       meta: {
         role: { label: L("Rol", "Role"), value: L("Desarrollo completo", "Sole developer") },
@@ -458,12 +458,12 @@ export function getContent(lang: Lang) {
           heading: L("Resumen", "Overview"),
           body: L(
             [
-              "Plan Tracker nació de un problema real: tener buenas ideas de actividades en pareja pero sin ningún sistema para organizarlas y garantizar que se ejecutan. La app clasifica los planes en tres niveles de prioridad — diarios, intermedios y especiales — y lleva el control de cuánto tiempo ha pasado desde la última actividad ejecutada en cada nivel, avisando de cuándo toca el siguiente.",
-              "Decidí construirlo desde cero con un stack moderno para tener control total sobre la lógica de negocio y consolidar el ciclo completo de desarrollo full stack: diseño de base de datos, autenticación, API REST, UI reactiva y despliegue en producción.",
+              "Plan Tracker es una aplicación colaborativa de planificación en grupo. Cualquier miembro puede proponer planes a través de una bandeja compartida; el admin los organiza por prioridad en tres niveles: N1 para planes del día a día, N2 para escapadas de fin de semana y N3 para ocasiones especiales. El sistema lleva el control de cuánto tiempo ha pasado desde el último plan ejecutado en cada nivel y envía notificaciones por email cuando se acerca la fecha.",
+              "Decidí construirlo desde cero con un stack moderno para tener control total sobre la lógica de negocio y consolidar el ciclo completo de desarrollo full stack: diseño de base de datos, autenticación, API REST, notificaciones transaccionales, UI reactiva y despliegue en producción.",
             ],
             [
-              "Plan Tracker was born from a real problem: having good ideas for couple activities but no system to organise them and make sure they actually happen. The app classifies plans into three priority tiers — daily, intermediate and special — and tracks how long it's been since the last activity at each level, signalling when the next one is due.",
-              "I built it from scratch with a modern stack to have full control over the business logic and to consolidate the complete full-stack development cycle: database design, authentication, REST API, reactive UI and production deployment.",
+              "Plan Tracker is a collaborative group planning app. Any member can suggest plans through a shared inbox; the admin organises them by priority across three tiers: N1 for daily activities, N2 for weekend getaways and N3 for special occasions. The system tracks how long it has been since the last plan was completed at each level and sends email notifications as the next date approaches.",
+              "I built it from scratch with a modern stack to have full control over the business logic and to consolidate the complete full-stack development cycle: database design, authentication, REST API, transactional notifications, reactive UI and production deployment.",
             ]
           ),
         },
@@ -471,12 +471,12 @@ export function getContent(lang: Lang) {
           heading: L("El reto", "The challenge"),
           body: L(
             [
-              "El problema no era «hacer una lista de planes». Era garantizar que los tres niveles de prioridad se respetaran a lo largo del tiempo: que los planes especiales no se posterguen indefinidamente, que los diarios no acaparen toda la atención y que el sistema funcione sin que nadie tenga que recordarlo manualmente.",
-              "Además, la aplicación tenía que ser multiusuario con roles diferenciados (admin y miembro), permitir que cualquiera proponga planes nuevos, y mantener el tracking de manera independiente para cada nivel sin que las operaciones de un usuario interfirieran con las del otro.",
+              "El reto no era solo guardar una lista de planes. Era garantizar que los tres niveles de prioridad se respetaran a lo largo del tiempo sin que nadie tuviera que recordarlo: que las ocasiones especiales (N3) no se posterguen indefinidamente, que las escapadas (N2) tengan su hueco y que los planes del día a día (N1) no acaparen toda la atención.",
+              "Encima, la aplicación tenía que ser multiusuario con roles diferenciados (admin y miembro), permitir que cualquiera proponga planes, enviar notificaciones por email de forma automática cuando se acerca la fecha y exponer una página de demo pública sin necesidad de registro.",
             ],
             [
-              "The problem wasn't just making a list of plans. It was making sure the three priority tiers were respected over time: that special plans don't get postponed indefinitely, that daily plans don't take all the focus, and that the system works without anyone having to remember it manually.",
-              "On top of that, the app needed to be multi-user with distinct roles (admin and member), allow anyone to propose new plans, and track each level independently without one user's operations interfering with the other's.",
+              "The challenge wasn't just storing a list of plans. It was making sure the three priority tiers were respected over time without anyone having to remember it: that special occasions (N3) don't get postponed indefinitely, that getaways (N2) get their slot and that daily plans (N1) don't take all the focus.",
+              "On top of that, the app needed to be multi-user with distinct roles (admin and member), let anyone suggest plans, send email notifications automatically as dates approach, and expose a public demo page without requiring registration.",
             ]
           ),
         },
@@ -488,16 +488,18 @@ export function getContent(lang: Lang) {
           ),
           points: L(
             [
-              "API REST con rutas de Next.js App Router separadas para planes, sugerencias y tracking. Cada ruta valida la sesión antes de devolver o modificar datos, con lógica de roles explícita en cada endpoint.",
-              "Modelo de datos en PostgreSQL con Prisma ORM: usuarios con roles (ADMIN/MEMBER), planes categorizados y un modelo de Tracking independiente por nivel que registra la última ejecución y calcula el próximo vencimiento.",
-              "Autenticación con NextAuth y sesiones persistentes. La redirección al login, al dashboard o al formulario de nuevo plan depende del rol y el estado de sesión desde el servidor.",
-              "UI dividida en componentes de responsabilidad única: PlanForm para crear, PlanInbox con filtros y ordenación múltiple, LevelCounters con contadores de días por nivel y SuggestionsBox para mostrar planes relevantes según prioridad.",
+              "API REST con rutas de Next.js App Router separadas para planes, sugerencias y tracking. Cada ruta valida la sesión y el rol antes de devolver o modificar datos.",
+              "Modelo de datos en PostgreSQL con Prisma ORM: usuarios con roles (ADMIN/MEMBER), planes con categorías personalizables y un modelo de Tracking independiente por nivel que registra la última ejecución y calcula el próximo vencimiento.",
+              "Autenticación con NextAuth 4 y sesiones persistentes. La redirección al login, al dashboard o al formulario de nuevo plan se resuelve en el servidor según el rol.",
+              "Notificaciones transaccionales con Resend: emails automáticos cuando se acerca la fecha del siguiente plan en cada nivel.",
+              "UI dividida en componentes de responsabilidad única: PlanForm, PlanInbox con filtros y ordenación múltiple, LevelCounters con contadores de días por nivel y página de demo pública sin registro.",
             ],
             [
-              "REST API with separate Next.js App Router routes for plans, suggestions and tracking. Each route validates the session before returning or modifying data, with explicit role logic in every endpoint.",
-              "PostgreSQL data model with Prisma ORM: users with roles (ADMIN/MEMBER), categorised plans, and an independent Tracking model per level that records the last execution and calculates the next due date.",
-              "Authentication with NextAuth and persistent sessions. Redirect to login, dashboard or new-plan form is resolved server-side based on role and session state.",
-              "UI split into single-responsibility components: PlanForm for creation, PlanInbox with multi-column filtering and sorting, LevelCounters with per-level day counters and SuggestionsBox showing relevant plans by priority.",
+              "REST API with separate Next.js App Router routes for plans, suggestions and tracking. Each route validates the session and role before returning or modifying data.",
+              "PostgreSQL data model with Prisma ORM: users with roles (ADMIN/MEMBER), plans with customisable categories, and an independent Tracking model per level that records the last execution and calculates the next due date.",
+              "Authentication with NextAuth 4 and persistent sessions. Redirect to login, dashboard or new-plan form is resolved server-side based on role.",
+              "Transactional notifications with Resend: automatic emails when the next plan date approaches for each level.",
+              "UI split into single-responsibility components: PlanForm, PlanInbox with multi-column filtering and sorting, LevelCounters with per-level day counters and a public demo page requiring no registration.",
             ]
           ),
         },
