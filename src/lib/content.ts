@@ -221,6 +221,25 @@ export function getContent(lang: Lang) {
           demo: "https://f1nallap.netlify.app/",
           caseStudy: "/proyectos/f1nallap",
         },
+        {
+          name: "Plan Tracker",
+          period: "2026",
+          tag: L("Proyecto personal", "Personal project"),
+          description: L(
+            "Aplicación web full stack para gestionar y hacer seguimiento de planes personales. Autenticación con NextAuth, base de datos PostgreSQL gestionada con Prisma ORM, panel de control, bandeja de entrada, categorías y sistema de sugerencias. Desplegada en Vercel.",
+            "Full-stack web application to manage and track personal plans. NextAuth authentication, PostgreSQL database managed with Prisma ORM, dashboard, inbox, categories and a suggestions system. Deployed on Vercel."
+          ),
+          technologies: [
+            "TypeScript",
+            "Next.js",
+            "Prisma · PostgreSQL",
+            "NextAuth",
+            "Tailwind CSS",
+          ],
+          github: "https://github.com/Ixo22/plan-tracker",
+          demo: "https://plan-tracker-pink.vercel.app",
+          caseStudy: null,
+        },
       ],
     },
 
