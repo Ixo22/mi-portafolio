@@ -240,6 +240,24 @@ export function getContent(lang: Lang) {
           demo: "https://plangrid.vercel.app/demo",
           caseStudy: "/proyectos/plan-tracker",
         },
+        {
+          name: "Dynamic Language",
+          period: "2026",
+          tag: L("Proyecto personal", "Personal project"),
+          description: L(
+            "Aplicación web para aprender japonés dirigida a hispanohablantes. Genera frases y diálogos adaptados al nivel del usuario mediante IA (Claude), implementa el algoritmo de repetición espaciada SM-2 sincronizado con Supabase, visualiza trazos de kanji animados y convierte la entrada en romaji a kana en tiempo real sin necesidad de teclado japonés.",
+            "Web app for learning Japanese aimed at Spanish speakers. Generates AI-powered phrases and dialogues adapted to the user's level (Claude), implements the SM-2 spaced repetition algorithm synced with Supabase, renders animated kanji stroke order and converts romaji input to kana in real time without a Japanese keyboard."
+          ),
+          technologies: [
+            "TypeScript",
+            "Next.js",
+            "Supabase",
+            "Anthropic Claude",
+            "Tailwind CSS",
+          ],
+          github: "https://github.com/Ixo22/dynamic-language",
+          demo: "https://dynamic-language.vercel.app",
+        },
       ],
     },
 
