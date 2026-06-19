@@ -257,6 +257,7 @@ export function getContent(lang: Lang) {
           ],
           github: "https://github.com/Ixo22/dynamic-language",
           demo: "https://dynamic-language.vercel.app",
+          caseStudy: "/proyectos/dynamic-language",
         },
       ],
     },
@@ -567,6 +568,120 @@ export function getContent(lang: Lang) {
           body: L(
             "Plan Tracker está en producción y en uso real. El resultado más valioso no fue el código sino comprobar que un modelo de datos bien diseñado puede resolver un problema de coordinación que antes dependía de la memoria o la improvisación. Este proyecto me consolidó en el desarrollo full stack y me reafirmó en algo que ya sabía del backend de empresa: los sistemas que importan de verdad son los que siguen funcionando cuando los datos son imperfectos y los usuarios no hacen lo que esperas.",
             "Plan Tracker is in production and in real use. The most valuable result wasn't the code but proving that a well-designed data model can solve a coordination problem that previously relied on memory or improvisation. This project consolidated my full-stack skills and reinforced something I already knew from enterprise backend work: the systems that really matter are the ones that keep working when data is imperfect and users don't do what you expect."
+          ),
+        },
+      },
+    },
+
+    dynamicLanguageCaseStudy: {
+      back: L("Volver al inicio", "Back to home"),
+      kicker: L("Caso de estudio", "Case study"),
+      title: "Dynamic Language",
+      subtitle: L(
+        "Aplicación web para aprender japonés con IA, repetición espaciada y entrada de texto en kana sin teclado japonés.",
+        "Web app for learning Japanese with AI-generated content, spaced repetition and kana input without a Japanese keyboard."
+      ),
+      meta: {
+        role: { label: L("Rol", "Role"), value: L("Desarrollo completo", "Sole developer") },
+        year: { label: L("Año", "Year"), value: "2026" },
+        stack: { label: "Stack", value: "Next.js · Supabase · Claude" },
+      },
+      repoLabel: L("Ver código", "View code"),
+      demoLabel: L("Ver demo", "Live demo"),
+      sections: {
+        overview: {
+          heading: L("Resumen", "Overview"),
+          body: L(
+            [
+              "Dynamic Language es una aplicación web para aprender japonés pensada específicamente para hispanohablantes. Ofrece frases y diálogos generados por IA adaptados al nivel del usuario, un módulo de flashcards con el algoritmo de repetición espaciada SM-2 sincronizado con Supabase, visualización animada del orden de trazos de los kanji y conversión en tiempo real de entrada en romaji a hiragana o katakana sin necesidad de configurar un teclado japonés.",
+              "Decidí construirlo porque quería integrar una API de IA en un producto real y ver hasta dónde llegaba la experiencia de aprendizaje que podía ofrecer el navegador sin depender de apps nativas. El resultado es una herramienta que uso como campo de pruebas para técnicas de adquisición de lenguas y para seguir explorando la integración de modelos de lenguaje en flujos de usuario concretos.",
+            ],
+            [
+              "Dynamic Language is a web app for learning Japanese, designed specifically for Spanish speakers. It provides AI-generated phrases and dialogues adapted to the user's level, an SM-2 spaced repetition flashcard module synced to Supabase, animated kanji stroke-order visualisation, and real-time romaji-to-kana conversion without requiring a Japanese keyboard.",
+              "I built it because I wanted to integrate an AI API into a real product and see how far a browser-based learning experience could go without native apps. The result is a tool I use as a testbed for language acquisition techniques and to keep exploring how language models fit into concrete user flows.",
+            ]
+          ),
+        },
+        problem: {
+          heading: L("El reto", "The challenge"),
+          body: L(
+            [
+              "El japonés plantea tres obstáculos simultáneos que las apps genéricas no resuelven bien para hispanohablantes: tres sistemas de escritura distintos (hiragana, katakana y kanji), una pronunciación sin cognados con el español y la necesidad de un método de entrada especial (IME) para escribir en japonés desde un teclado occidental.",
+              "Quería que un usuario pudiera abrir la app, leer una frase en japonés con su pronunciación, escucharla, practicar escribiéndola en romaji y repasar las más difíciles días después, todo sin instalar nada ni cambiar la configuración de su sistema. Además, el contenido tenía que adaptarse al nivel del usuario en lugar de ser estático, lo que descartaba un catálogo manual.",
+            ],
+            [
+              "Japanese presents three simultaneous obstacles that generic apps don't solve well for Spanish speakers: three distinct writing systems (hiragana, katakana and kanji), pronunciation with no cognates to Spanish, and the need for a special input method (IME) to type Japanese on a Western keyboard.",
+              "I wanted a user to open the app, read a Japanese phrase with its pronunciation, hear it, practise writing it in romaji and review the hardest ones days later — all without installing anything or changing system settings. On top of that, content had to adapt to the user's level rather than being static, which ruled out a manual catalogue.",
+            ]
+          ),
+        },
+        architecture: {
+          heading: L("Arquitectura y decisiones", "Architecture & decisions"),
+          intro: L(
+            "La aplicación combina cuatro piezas independientes que se integran en el cliente:",
+            "The app combines four independent pieces that integrate on the client side:"
+          ),
+          points: L(
+            [
+              "Generación de contenido con Claude: rutas de API en Next.js App Router llaman a la API de Anthropic con prompts estructurados para obtener frases o diálogos en JSON. El prompt incluye el nivel del usuario y el contexto situacional (supermercado, restaurante, transporte…) para garantizar relevancia y variedad.",
+              "Repetición espaciada con SM-2: cada flashcard almacena en Supabase su factor de facilidad, intervalo y próxima fecha de repaso. El algoritmo recalcula estos valores en el cliente tras cada respuesta y persiste el nuevo estado de forma asíncrona, sin bloquear la interacción.",
+              "Conversión de romaji a kana con wanakana: el campo de práctica intercepta la entrada del usuario y la convierte en tiempo real a hiragana o katakana según la secuencia tecleada, sin modificar el cursor ni requerir ningún IME del sistema operativo.",
+              "Audio y trazos en el navegador: la pronunciación se reproduce con la Web Speech API y los trazos de kanji se animan en canvas a partir de los datos de KanjiVG, sin peticiones adicionales al servidor una vez cargados.",
+            ],
+            [
+              "Content generation with Claude: Next.js App Router API routes call the Anthropic API with structured prompts to get phrases or dialogues as JSON. The prompt includes the user's level and situational context (supermarket, restaurant, transport…) to ensure relevance and variety.",
+              "Spaced repetition with SM-2: each flashcard stores its ease factor, interval and next review date in Supabase. The algorithm recalculates these values client-side after each answer and persists the new state asynchronously without blocking interaction.",
+              "Romaji-to-kana conversion with wanakana: the practice input field intercepts the user's keystrokes and converts them in real time to hiragana or katakana based on the typed sequence, without shifting the cursor or requiring any OS-level IME.",
+              "Audio and stroke order in the browser: pronunciation is played through the Web Speech API and kanji strokes are animated on canvas from KanjiVG data, with no additional server requests once loaded.",
+            ]
+          ),
+        },
+        challenges: {
+          heading: L("Dificultades y aprendizajes", "Difficulties & lessons"),
+          intro: L(
+            "Estos fueron los puntos donde más tuve que pensar:",
+            "These were the points that required the most thought:"
+          ),
+          items: L(
+            [
+              {
+                title: "Salida estructurada fiable desde Claude",
+                body: "Conseguir que la API devolviera siempre JSON válido con el esquema exacto que esperaba fue el primer escollo. Resolverlo implicó diseñar prompts con ejemplos explícitos del formato, validar la respuesta en la ruta API y reintentar con un mensaje de corrección cuando el modelo se desviaba, en lugar de propagar el error al cliente.",
+              },
+              {
+                title: "SM-2 sin lecturas inconsistentes",
+                body: "El algoritmo actualiza múltiples campos a la vez (factor de facilidad, intervalo, fecha) y la UI tiene que reflejar el nuevo estado inmediatamente. Gestionar el optimistic update en el cliente mientras la escritura en Supabase es asíncrona, sin que el usuario vea datos obsoletos si recarga, fue más delicado de lo esperado.",
+              },
+              {
+                title: "Conversión de romaji con wanakana",
+                body: "La librería convierte secuencias de caracteres mientras el usuario escribe, lo que genera comportamientos inesperados en combinaciones como 'tsu', 'chi' o 'n' antes de vocal. Entender el modelo de estado interno de wanakana y testearlo con edge cases fue necesario para que la experiencia de escritura se sintiera natural.",
+              },
+            ],
+            [
+              {
+                title: "Reliable structured output from Claude",
+                body: "Getting the API to always return valid JSON with the exact schema I expected was the first hurdle. Solving it meant designing prompts with explicit format examples, validating the response in the API route and retrying with a correction message when the model deviated — rather than propagating the error to the client.",
+              },
+              {
+                title: "SM-2 without stale reads",
+                body: "The algorithm updates multiple fields at once (ease factor, interval, date) and the UI has to reflect the new state immediately. Managing the optimistic update on the client while the Supabase write is asynchronous — without the user seeing stale data on a reload — was trickier than expected.",
+              },
+              {
+                title: "Romaji conversion edge cases with wanakana",
+                body: "The library converts character sequences as the user types, which produces unexpected behaviour for combinations like 'tsu', 'chi' or 'n' before a vowel. Understanding wanakana's internal state model and testing it against edge cases was necessary to make the typing experience feel natural.",
+              },
+            ]
+          ),
+          note: L(
+            "Iré ampliando esta sección según el proyecto evolucione.",
+            "I'll keep expanding this section as the project evolves."
+          ),
+        },
+        outcome: {
+          heading: L("Resultado", "Outcome"),
+          body: L(
+            "Dynamic Language está desplegado y en uso activo. Lo que más me llevé del proyecto fue la claridad de que integrar un LLM no es solo llamar a una API: el trabajo real está en el diseño del prompt, la validación del contrato de datos y decidir dónde vive la lógica de negocio cuando el modelo es una pieza más de la cadena. También me quedé con que la Web Speech API y las APIs de canvas del navegador dan para mucho más de lo que parece a primera vista.",
+            "Dynamic Language is deployed and in active use. The biggest takeaway was realising that integrating an LLM isn't just calling an API: the real work is in prompt design, data contract validation and deciding where business logic lives when the model is just one piece of the pipeline. I also came away with a much greater appreciation for how far the browser's Web Speech API and canvas APIs can take you."
           ),
         },
       },
