@@ -38,7 +38,7 @@ export default function DynamicLanguageCaseStudy() {
   const cs = getContent(lang).dynamicLanguageCaseStudy;
   const s = cs.sections;
   const repo = "https://github.com/Ixo22/dynamic-language";
-  const demo = "https://dynamic-language.vercel.app";
+  const demo = "https://dynamiclang.vercel.app/demo";
 
   return (
     <div className="relative z-10 font-sans">

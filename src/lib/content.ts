@@ -256,7 +256,7 @@ export function getContent(lang: Lang) {
             "Tailwind CSS",
           ],
           github: "https://github.com/Ixo22/dynamic-language",
-          demo: "https://dynamic-language.vercel.app",
+          demo: "https://dynamiclang.vercel.app/demo",
           caseStudy: "/proyectos/dynamic-language",
         },
       ],
