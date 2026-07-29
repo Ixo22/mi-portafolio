@@ -217,8 +217,8 @@ export function getContent(lang: Lang) {
           period: "2026",
           tag: L("Proyecto personal", "Personal project"),
           description: L(
-            "Aplicación colaborativa de planificación en grupo. Bandeja compartida donde cualquier miembro propone planes; el admin los organiza por prioridad en tres niveles (N1 diario, N2 escapada, N3 ocasión especial). Notificaciones por email cuando se acerca la fecha, categorías personalizables y página de demo pública.",
-            "Collaborative group planning app. A shared inbox where any member suggests plans; the admin organises them by priority across three tiers (N1 daily, N2 weekend getaway, N3 special occasion). Email notifications as dates approach, customisable categories and a public demo page."
+            "App para organizar planes en pareja, con amigos o en grupo. Bandeja de entrada compartida donde cualquiera sugiere planes, tres niveles de prioridad con su propio contador de días y notificaciones por email para no perderos el siguiente.",
+            "An app for organizing plans with a partner, friends or any group. A shared inbox where anyone can suggest plans, three priority levels each with its own day counter, and email notifications so you never miss the next one."
           ),
           technologies: [
             "TypeScript",
@@ -236,8 +236,8 @@ export function getContent(lang: Lang) {
           period: "2026",
           tag: L("Proyecto personal", "Personal project"),
           description: L(
-            "Aplicación web para aprender japonés dirigida a hispanohablantes. Genera frases y diálogos adaptados al nivel del usuario mediante IA (Claude), implementa el algoritmo de repetición espaciada SM-2 sincronizado con Supabase, visualiza trazos de kanji animados y convierte la entrada en romaji a kana en tiempo real sin necesidad de teclado japonés.",
-            "Web app for learning Japanese aimed at Spanish speakers. Generates AI-powered phrases and dialogues adapted to the user's level (Claude), implements the SM-2 spaced repetition algorithm synced with Supabase, renders animated kanji stroke order and converts romaji input to kana in real time without a Japanese keyboard."
+            "App para aprender japonés con input comprensible, repetición espaciada (SRS) y práctica activa. Genera frases con IA adaptadas al nivel del usuario, sincroniza el progreso con Supabase e incluye práctica de trazos de kanji y conversión de romaji a kana en tiempo real.",
+            "An app for learning Japanese through comprehensible input, spaced repetition (SRS) and active practice. Generates level-adapted phrases with AI, syncs progress via Supabase, and includes kanji stroke-order practice and real-time romaji-to-kana conversion."
           ),
           technologies: [
             "TypeScript",
