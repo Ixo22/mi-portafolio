@@ -209,13 +209,8 @@ export default function Home() {
         {/* ─── CÓMO TRABAJO ─────────────────────────────────────── */}
         <section id="metodo" className="py-24 scroll-mt-20">
           <Eyebrow>{c.method.eyebrow}</Eyebrow>
-          <Reveal>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#f3f0ea] tracking-[-0.02em] mb-14 max-w-2xl">
-              {c.method.heading}
-            </h2>
-          </Reveal>
 
-          <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+          <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12 mt-14">
             {c.method.principles.map((p, i) => (
               <Reveal key={p.n} delay={(i % 2) * 120}>
                 <div className="group">

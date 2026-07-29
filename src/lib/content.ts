@@ -20,12 +20,12 @@ export function getContent(lang: Lang) {
 
     hero: {
       badge: L("Backend Developer · Madrid, España", "Backend Developer · Madrid, Spain"),
-      h1a: L("Construyo el backend que ", "I build the backend that "),
-      h1accent: L("no se puede permitir", "can't afford"),
-      h1b: L(" fallar.", " to fail."),
+      h1a: L("Soy Alberto García, desarrollador backend especializado en ", "I'm Alberto García, backend developer specialized in "),
+      h1accent: L("Java", "Java"),
+      h1b: L(".", "."),
       intro: L(
-        "Soy Alberto García. Diseño microservicios en Java y arquitecturas de datos para el sector seguros — donde un dato mal procesado cuesta dinero y rompe el compliance. Llevo más de un año haciéndolo en producción para una aseguradora global.",
-        "I'm Alberto García. I design Java microservices and data architectures for the insurance sector — where a single mishandled record costs money and breaks compliance. I've been doing it in production for over a year at a global insurer."
+        "Trabajo con microservicios en el sector seguros, donde un dato mal procesado no es solo un bug: puede costar dinero o saltarse una norma. Ahí es donde entro yo, en el mantenimiento y desarrollo de esos sistemas. Llevo más de dos años como desarrollador backend, el último especializado en este sector.",
+        "I work with microservices in the insurance sector, where a mishandled record isn't just a bug — it can cost money or break a rule. That's where I come in, maintaining and building those systems. I've been a backend developer for over two years, the last one specialized in this sector."
       ),
       cta: L("Hablemos", "Let's talk"),
       scroll: L("Sigue leyendo", "Keep reading"),
@@ -35,23 +35,23 @@ export function getContent(lang: Lang) {
       eyebrow: L("Sobre mí", "About"),
       caption: L("Alberto García · Madrid", "Alberto García · Madrid"),
       p1a: L(
-        "No llegué a la programación por las modas, sino por lo que la buena ingeniería ",
-        "I didn't get into programming for the hype, but for what good engineering "
+        "Empecé en programación porque me interesaba ",
+        "I got into programming because I wanted to "
       ),
-      p1em: L("sostiene", "holds up"),
+      p1em: L("resolver problemas reales", "solve real problems"),
       p1b: L(
-        ": sistemas que mueven datos sensibles de millones de pólizas y que tienen que seguir en pie cuando más se les necesita.",
-        ": systems that move sensitive data across millions of policies and have to stay standing exactly when they're needed most."
+        ", no por seguir una moda. Ahora trabajo con sistemas que mueven datos sensibles de millones de pólizas, sistemas que tienen que funcionar sí o sí.",
+        ", not follow a trend. Now I work with systems that move sensitive data across millions of policies — systems that simply have to work."
       ),
       p2a: L("Mi terreno es el ", "My home turf is the "),
       p2accent: L("backend en Java", "Java backend"),
       p2b: L(
-        ": microservicios, APIs REST robustas, flujos asíncronos entre servicios distribuidos y arquitecturas de datos pensadas para compliance normativo. He trabajado en MetLife y NFQ en proyectos reales del sector seguros, y en un proyecto internacional para KNAPP en Graz, Austria.",
-        ": microservices, robust REST APIs, asynchronous flows between distributed services and data architectures built for regulatory compliance. I've worked at MetLife and NFQ on real insurance projects, and on an international project for KNAPP in Graz, Austria."
+        ". Trabajo con microservicios, consumo APIs REST y toco flujos asíncronos entre servicios cuando toca. He pasado por MetLife y NFQ haciendo desarrollo backend real en proyectos del sector seguros, y también por un proyecto internacional para KNAPP en Graz, Austria.",
+        ". I work with microservices, consume REST APIs and touch asynchronous flows between services when needed. I've been through MetLife and NFQ doing real backend development on insurance-sector projects, and also on an international project for KNAPP in Graz, Austria."
       ),
       p3: L(
-        "Lo que me diferencia no es saber muchas tecnologías, sino entender por qué importan. Me obsesiona la calidad del dato, diseñar para el fallo y medir lo que despliego. Y aunque soy backend de raíz, estoy ampliando hacia full stack — este sitio es la prueba, no una promesa.",
-        "What sets me apart isn't knowing many technologies, but understanding why they matter. I'm obsessed with data quality, designing for failure and measuring what I ship. And although I'm backend at the core, I'm expanding into full stack — this site is the proof, not the promise."
+        "No me interesa acumular tecnologías por acumular. Me interesa entender por qué se usan y cuándo tienen sentido. Me obsesiona la calidad del dato, y medir lo que despliego. Vengo del backend, aunque desde hace un tiempo estoy ampliando hacia full stack — este sitio es la prueba.",
+        "I'm not interested in stacking up technologies for the sake of it. I care about understanding why they're used and when they make sense. I'm obsessed with data quality, and with measuring what I ship. I come from backend, though for a while now I've been expanding into full stack — this site is the proof."
       ),
       signature: "— Alberto García Alcolado",
       facts: [
@@ -66,38 +66,29 @@ export function getContent(lang: Lang) {
 
     method: {
       eyebrow: L("Cómo trabajo", "How I work"),
-      heading: L("Cuatro cosas en las que no cedo.", "Four things I won't compromise on."),
       principles: [
         {
           n: "01",
-          title: L("El dato es sagrado", "Data is sacred"),
+          title: L("La calidad del dato, antes que nada", "Data quality, above all"),
           body: L(
-            "En seguros, un registro duplicado o mal modelado no es un bug menor: rompe el reporting, falsea el riesgo y te lleva por delante en una auditoría. Diseñé una estrategia Golden Record precisamente para que eso no pase. Trazabilidad y calidad del dato antes que velocidad.",
-            "In insurance, a duplicated or badly modelled record isn't a minor bug: it breaks reporting, distorts risk and takes you down in an audit. I designed a Golden Record strategy precisely so that doesn't happen. Traceability and data quality before speed."
+            "En seguros, un registro duplicado o mal modelado no es un bug menor: rompe el reporting, falsea el riesgo y puede salir caro en una auditoría. Por eso participé en diseñar una estrategia Golden Record.",
+            "In insurance, a duplicated or badly modelled record isn't a minor bug: it breaks reporting, distorts risk and can get expensive in an audit. That's why I helped design a Golden Record strategy."
           ),
         },
         {
           n: "02",
-          title: L("Diseño para el fallo, no para el camino feliz", "I design for failure, not the happy path"),
+          title: L("Detecto y corrijo, no dejo que se acumule", "I catch and fix, I don't let it pile up"),
           body: L(
-            "Una API que solo funciona con datos perfectos no sirve en producción. Valido esquemas con dureza, contemplo los edge cases y pruebo los flujos asíncronos de extremo a extremo. Prefiero que el sistema falle de forma controlada a que falle por sorpresa a las 3 de la mañana.",
-            "An API that only works with perfect data is useless in production. I validate schemas strictly, account for edge cases and test asynchronous flows end to end. I'd rather a system fail in a controlled way than fail by surprise at 3 a.m."
+            "Reviso y corrijo bugs de forma habitual, y antes de que algo llegue a producción, pasa por revisión de código. Prefiero pillar el fallo ahí que enterarme por un ticket urgente.",
+            "I review and fix bugs regularly, and before anything reaches production, it goes through code review. I'd rather catch the issue there than find out through an urgent ticket."
           ),
         },
         {
           n: "03",
-          title: L("Si no se mide, no existe", "If it isn't measured, it doesn't exist"),
+          title: L("Mido lo que despliego, y sigo aprendiendo", "I measure what I ship, and keep learning"),
           body: L(
-            "Monté monitorización con Elasticsearch y KPIs automatizados en Power BI sobre consultas optimizadas. Quiero ver cómo se comporta lo que despliego, detectar incidencias antes que el negocio y poder responder con datos, no con intuiciones.",
-            "I set up monitoring with Elasticsearch and automated KPIs in Power BI over optimized queries. I want to see how what I ship behaves, catch incidents before the business does and respond with data, not hunches."
-          ),
-        },
-        {
-          n: "04",
-          title: L("Aprendo en serio, no por moda", "I learn for real, not for trends"),
-          body: L(
-            "Soy backend de raíz, pero no me escondo detrás de la API. Este portfolio lo construí con Next.js y TypeScript desde cero para entender el stack completo. Cuando algo me hace falta para hacer mejor mi trabajo, lo aprendo a fondo.",
-            "I'm backend at the core, but I don't hide behind the API. I built this portfolio with Next.js and TypeScript from scratch to understand the full stack. When I need something to do my job better, I learn it properly."
+            "Monté monitorización con Elasticsearch y KPIs en Power BI para ver cómo se comporta lo que despliego. Vengo del backend, pero no me quedo solo ahí. Este portfolio lo construí con Next.js y TypeScript. Cuando algo me hace falta para trabajar mejor, lo aprendo a fondo.",
+            "I set up monitoring with Elasticsearch and KPIs in Power BI to see how what I ship behaves. I come from backend, but I don't stop there. I built this portfolio with Next.js and TypeScript. When I need something to work better, I learn it properly."
           ),
         },
       ],
@@ -119,20 +110,20 @@ export function getContent(lang: Lang) {
           ),
           points: [
             L(
-              "Reduje los tiempos de respuesta de aplicaciones críticas reescribiendo lógica de negocio en Java y optimizando el procesamiento de eventos asíncronos en arquitectura de microservicios.",
-              "Cut response times on critical applications by rewriting business logic in Java and optimizing asynchronous event processing in a microservices architecture."
+              "Reduje los tiempos de respuesta de aplicaciones críticas reescribiendo lógica de negocio en Java y colaborando en la optimización del procesamiento de eventos asíncronos en arquitectura de microservicios.",
+              "Cut response times on critical applications by rewriting business logic in Java and contributing to the optimization of asynchronous event processing in a microservices architecture."
             ),
             L(
-              "Diseñé y desplegué APIs REST con validación estricta de esquemas y gestión de edge cases, reduciendo los fallos de integración entre servicios.",
-              "Designed and deployed REST APIs with strict schema validation and edge-case handling, reducing integration failures between services."
+              "Testeé APIs REST, validando esquemas y detectando fallos e incidencias antes de su integración entre servicios, reduciendo problemas de integración.",
+              "Tested REST APIs, validating schemas and catching bugs and issues before their integration between services, reducing integration issues."
             ),
             L(
-              "Garanticé la consistencia del intercambio asíncrono entre servicios distribuidos con pruebas E2E, incluyendo flujos con comportamiento equivalente a brokers de mensajería.",
-              "Ensured consistency of asynchronous exchange between distributed services with E2E tests, including flows behaving like message brokers."
+              "Contribuí a la consistencia del intercambio asíncrono entre servicios distribuidos mediante pruebas de integración sobre estos flujos.",
+              "Contributed to the consistency of asynchronous exchange between distributed services through integration tests on these flows."
             ),
             L(
-              "Definí KPIs automatizados en Power BI sobre SQL Server y monté monitorización con Elasticsearch, reduciendo el tiempo de detección de incidencias.",
-              "Defined automated KPIs in Power BI over SQL Server and set up monitoring with Elasticsearch, reducing incident detection time."
+              "Implementé KPIs automatizados en Power BI sobre SQL Server y monté monitorización con Elasticsearch, reduciendo el tiempo de detección de incidencias.",
+              "Implemented automated KPIs in Power BI over SQL Server and set up monitoring with Elasticsearch, reducing incident detection time."
             ),
           ],
           stack: ["Java", "Microservicios", "REST", "SQL Server", "Azure DevOps", "Elasticsearch"],
@@ -153,19 +144,19 @@ export function getContent(lang: Lang) {
           ),
           points: [
             L(
-              "Diseñé una estrategia Golden Record para unificar grandes volúmenes de datos críticos, reduciendo duplicidades y mejorando la calidad del dato para gestión de riesgos y reporting.",
-              "Designed a Golden Record strategy to unify large volumes of critical data, reducing duplicates and improving data quality for risk management and reporting."
+              "Participé en el diseño de una estrategia Golden Record para unificar grandes volúmenes de datos críticos, reduciendo duplicidades y mejorando la calidad del dato para gestión de riesgos y reporting.",
+              "Took part in designing a Golden Record strategy to unify large volumes of critical data, reducing duplicates and improving data quality for risk management and reporting."
             ),
             L(
-              "Optimicé pipelines ETL en SQL Server con scripts avanzados en Python, recortando los tiempos de carga en procesos batch críticos del módulo de Siniestros.",
-              "Optimized ETL pipelines in SQL Server with advanced Python scripts, cutting load times on critical batch processes in the Claims module."
+              "Optimicé pipelines ETL en SQL Server, recortando los tiempos de carga en procesos batch críticos del módulo de Siniestros.",
+              "Optimized ETL pipelines in SQL Server, cutting load times on critical batch processes in the Claims module."
             ),
             L(
-              "Modelé arquitecturas de datos orientadas a cumplimiento normativo, preparadas para volúmenes propios de Big Data financiero.",
-              "Modelled data architectures geared towards regulatory compliance, ready for financial Big Data volumes."
+              "Trabajé con datos sujetos a normativa de cumplimiento, dentro de arquitecturas ya establecidas, con foco en calidad y trazabilidad para gestión de riesgos.",
+              "Worked with data subject to compliance regulations, within already-established architectures, with a focus on quality and traceability for risk management."
             ),
           ],
-          stack: ["Python", "SQL Server", "ETL", "Golden Record", "Big Data"],
+          stack: ["SQL Server", "ETL", "Golden Record", "Compliance"],
           sub: null as string | null,
         },
         {
@@ -180,8 +171,8 @@ export function getContent(lang: Lang) {
           ),
           points: [
             L(
-              "Desarrollé scripts de automatización en Python y Java para la sincronización lógica de sistemas en tiempo real.",
-              "Developed automation scripts in Python and Java for real-time logical synchronization of systems."
+              "Adapté y modifiqué scripts de automatización en Python según los requerimientos del proyecto, y desarrollé lógica en Java para la sincronización de sistemas en tiempo real.",
+              "Adapted and modified Python automation scripts according to project requirements, and developed Java logic for real-time system synchronization."
             ),
             L(
               "Optimicé consultas SQL complejas y administré procesos en servidor Linux para garantizar la trazabilidad de los datos de almacenamiento.",
@@ -283,13 +274,10 @@ export function getContent(lang: Lang) {
 
     contact: {
       eyebrow: L("Contacto", "Contact"),
-      heading: L(
-        "¿Buscas a alguien que se tome en serio el backend?",
-        "Looking for someone who takes the backend seriously?"
-      ),
+      heading: L("Hablemos.", "Let's talk."),
       intro: L(
-        "Estoy abierto a roles backend, arquitecturas distribuidas y proyectos donde la calidad del dato y la fiabilidad importen de verdad. Si crees que puedo aportar, escríbeme — respondo a todo.",
-        "I'm open to backend roles, distributed architectures and projects where data quality and reliability genuinely matter. If you think I can help, drop me a line — I reply to everything."
+        "¿Tienes un proyecto backend entre manos? Me interesan los microservicios y todo lo que tenga que ver con datos bien tratados — escríbeme, respondo siempre.",
+        "Got a backend project in the works? I'm into microservices and anything to do with well-handled data — reach out, I always reply."
       ),
       linkedinBtn: L("Conecta en LinkedIn", "Connect on LinkedIn"),
       labels: {
