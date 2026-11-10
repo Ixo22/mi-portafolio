@@ -4,6 +4,9 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
+import ApiMonitor from "@/components/ApiMonitor";
+import CountUp from "@/components/CountUp";
+import Timeline from "@/components/Timeline";
 import { useLanguage } from "@/components/LanguageProvider";
 import {
   getContent,
@@ -11,6 +14,7 @@ import {
   LINKEDIN_URL,
   GITHUB_URL,
   PHONE,
+  type Metric,
 } from "@/lib/content";
 import { Mail, Phone, MapPin, ArrowUpRight, ArrowDown } from "lucide-react";
 
@@ -64,6 +68,21 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
+function Metrics({ items }: { items: Metric[] }) {
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-5 py-5 mb-5 border-y border-line">
+      {items.map((m) => (
+        <div key={m.label}>
+          <p className="font-serif text-3xl md:text-4xl text-accent tracking-[-0.02em] leading-none mb-2">
+            <CountUp value={m.value} prefix={m.prefix} suffix={m.suffix} />
+          </p>
+          <p className="text-faint text-xs leading-snug">{m.label}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   const { lang } = useLanguage();
   const c = getContent(lang);
@@ -76,7 +95,7 @@ export default function Home() {
         {/* ─── HERO ─────────────────────────────────────────────── */}
         <header
           id="inicio"
-          className="min-h-screen flex flex-col justify-center py-28"
+          className="min-h-screen flex flex-col justify-center pt-28 pb-14"
         >
           <Reveal>
             <p className="font-mono text-sm text-accent mb-6 flex items-center gap-2">
@@ -146,7 +165,7 @@ export default function Home() {
               href="#sobre-mi"
               className="mt-24 inline-flex items-center gap-2 text-faint hover:text-muted text-xs font-mono uppercase tracking-widest transition-colors"
             >
-              <ArrowDown size={14} className="animate-bounce" />
+              <ArrowDown size={14} className="scroll-drift" />
               {c.hero.scroll}
             </a>
           </Reveal>
@@ -231,9 +250,13 @@ export default function Home() {
         <section id="experiencia" className="py-24 scroll-mt-20">
           <Eyebrow>{c.experience.eyebrow}</Eyebrow>
 
-          <div className="space-y-px">
+          <Timeline>
             {c.experience.items.map((exp, i) => (
-              <Reveal key={exp.company} delay={i * 80}>
+              <Reveal key={exp.company} delay={i * 80} className="relative">
+                <span
+                  className="timeline-dot absolute -left-8 md:-left-10 top-[2.9rem] w-[11px] h-[11px] md:w-[15px] md:h-[15px] rounded-full border border-line bg-background"
+                  aria-hidden="true"
+                />
                 <div className="grid md:grid-cols-12 gap-4 md:gap-8 py-10 border-t border-line">
                   <div className="md:col-span-4">
                     <div className="flex items-center gap-2.5">
@@ -270,6 +293,7 @@ export default function Home() {
                         </li>
                       ))}
                     </ul>
+                    {exp.metrics && <Metrics items={exp.metrics} />}
                     {exp.sub && (
                       <p className="text-faint text-sm italic mb-4">{exp.sub}</p>
                     )}
@@ -284,7 +308,7 @@ export default function Home() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </Timeline>
         </section>
 
         {/* ─── PROYECTOS ────────────────────────────────────────── */}
@@ -310,6 +334,12 @@ export default function Home() {
                     <p className="text-[#cfc9bf] leading-relaxed mb-5">
                       {project.description}
                     </p>
+                    {project.metrics && <Metrics items={project.metrics} />}
+                    {project.monitor && (
+                      <div className="mb-6">
+                        <ApiMonitor t={c.monitor} />
+                      </div>
+                    )}
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 justify-between">
                       <div className="flex flex-wrap gap-x-4 gap-y-1.5">
                         {project.technologies.map((tech) => (

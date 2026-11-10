@@ -5,6 +5,8 @@ export const LINKEDIN_URL = "https://linkedin.com/in/aalbeerto";
 export const GITHUB_URL = "https://github.com/ixo22";
 export const PHONE = "+34 646 26 13 09";
 
+export type Metric = { value: number; prefix?: string; suffix?: string; label: string };
+
 export function getContent(lang: Lang) {
   const L = <T,>(es: T, en: T): T => (lang === "es" ? es : en);
 
@@ -29,6 +31,24 @@ export function getContent(lang: Lang) {
       ),
       cta: L("Hablemos", "Let's talk"),
       scroll: L("Sigue leyendo", "Keep reading"),
+    },
+
+    monitor: {
+      locale: L("es-ES", "en-GB"),
+      title: L("f1nallap-api · monitor en directo", "f1nallap-api · live monitor"),
+      statusLabel: L("Estado", "Status"),
+      latencyLabel: L("Latencia", "Latency"),
+      uptimeLabel: L("Uptime", "Uptime"),
+      checking: L("Comprobando…", "Checking…"),
+      waking: L("Despertando…", "Waking up…"),
+      up: "UP",
+      down: "DOWN",
+      wakingHint: L(
+        "El servidor está en el plan gratuito de Render y se duerme sin tráfico. Tarda ~1 min en arrancar.",
+        "The server runs on Render's free tier and sleeps without traffic. It takes ~1 min to boot."
+      ),
+      lastCheck: L("Último chequeo", "Last check"),
+      every: L("cada 30 s", "every 30 s"),
     },
 
     about: {
@@ -142,6 +162,22 @@ export function getContent(lang: Lang) {
             ),
           ],
           stack: ["Java", "APIs REST", "Bruno", "Playwright", "Elastic Observability", "SQL Server", "Azure DevOps"],
+          metrics: [
+            {
+              value: 3,
+              label: L("APIs REST que valido antes de cada pase a producción", "REST APIs I validate before every production release"),
+            },
+            {
+              value: 2,
+              label: L("aplicaciones con monitorización sintética en Playwright y Elastic", "applications with synthetic monitoring in Playwright and Elastic"),
+            },
+            {
+              value: 2,
+              prefix: "~",
+              suffix: " h",
+              label: L("para automatizar una extracción estimada en más de un día", "to automate a data extraction estimated at over a day"),
+            },
+          ] as Metric[],
           sub: L(
             "Empecé como desarrollador de aplicaciones Java en prácticas (sep 2024) y pasé a Desarrollador de TI en feb 2026.",
             "Started as a Java application developer intern (Sep 2024) and moved to IT Developer in Feb 2026."
@@ -211,9 +247,20 @@ export function getContent(lang: Lang) {
           period: L("2025 – Presente", "2025 – Present"),
           tag: L("TFG ampliado · Full stack", "Extended Final Degree Project · Full stack"),
           description: L(
-            "App full stack de Fórmula 1 con backend propio en producción: API REST versionada en Spring Boot sobre PostgreSQL, ingesta programada desde Jolpica con reintentos y backoff, y un simulador de estrategias determinista portado de TypeScript a Java. 26 tests de backend con Testcontainers y WireMock, 51 en el front Angular y CI en GitHub Actions.",
-            "A full-stack Formula 1 app with its own backend in production: a versioned Spring Boot REST API on PostgreSQL, scheduled ingestion from Jolpica with retries and backoff, and a deterministic strategy simulator ported from TypeScript to Java. 26 backend tests with Testcontainers and WireMock, 51 on the Angular front end, and CI on GitHub Actions."
+            "App full stack de Fórmula 1 con backend propio en producción: API REST versionada en Spring Boot sobre PostgreSQL, ingesta programada desde Jolpica con reintentos y backoff, y un simulador de estrategias determinista portado de TypeScript a Java. Tests con Testcontainers y WireMock, y CI en GitHub Actions.",
+            "A full-stack Formula 1 app with its own backend in production: a versioned Spring Boot REST API on PostgreSQL, scheduled ingestion from Jolpica with retries and backoff, and a deterministic strategy simulator ported from TypeScript to Java. Tests with Testcontainers and WireMock, and CI on GitHub Actions."
           ),
+          metrics: [
+            {
+              value: 26,
+              label: L("tests de backend (JUnit, Testcontainers, WireMock)", "backend tests (JUnit, Testcontainers, WireMock)"),
+            },
+            {
+              value: 51,
+              label: L("tests en el front Angular", "tests on the Angular front end"),
+            },
+          ] as Metric[],
+          monitor: true,
           technologies: [
             "Java 21",
             "Spring Boot 4",

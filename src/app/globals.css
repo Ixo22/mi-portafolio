@@ -108,7 +108,55 @@ body::before {
   transform: translateY(0);
 }
 
+/* Scroll hint: deriva suave, sin rebote */
+@keyframes drift {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+.scroll-drift {
+  animation: drift 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Monitor en directo */
+@keyframes monitor-ping {
+  0% { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(2.8); opacity: 0; }
+}
+.monitor-ping {
+  animation: monitor-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes monitor-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.monitor-pulse {
+  animation: monitor-pulse 1.2s ease-in-out infinite;
+}
+@keyframes bar-in {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+.monitor-bar {
+  transform-origin: bottom;
+  animation: bar-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Punto de la línea de tiempo */
+.timeline-dot {
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+.reveal.is-visible .timeline-dot {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .scroll-drift,
+  .monitor-ping,
+  .monitor-pulse,
+  .monitor-bar {
+    animation: none;
+  }
   .reveal {
     opacity: 1;
     transform: none;
