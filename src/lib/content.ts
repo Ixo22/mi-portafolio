@@ -20,12 +20,12 @@ export function getContent(lang: Lang) {
 
     hero: {
       badge: L("Backend Developer · Madrid, España", "Backend Developer · Madrid, Spain"),
-      h1a: L("Soy Alberto García, desarrollador backend especializado en ", "I'm Alberto García, backend developer specialized in "),
+      h1a: L("Soy Alberto García, desarrollador backend en ", "I'm Alberto García, a backend developer working in "),
       h1accent: L("Java", "Java"),
       h1b: L(".", "."),
       intro: L(
-        "Trabajo con microservicios en el sector seguros, donde un dato mal procesado no es solo un bug: puede costar dinero o saltarse una norma. Ahí es donde entro yo, en el mantenimiento y desarrollo de esos sistemas. Llevo más de dos años como desarrollador backend, el último especializado en este sector.",
-        "I work with microservices in the insurance sector, where a mishandled record isn't just a bug — it can cost money or break a rule. That's where I come in, maintaining and building those systems. I've been a backend developer for over two years, the last one specialized in this sector."
+        "Ingeniero informático con experiencia desde 2024 en el sector seguros con Java, SQL y APIs REST. Vengo del lado de las pruebas, así que escribo código pensando en cómo se va a romper. Por mi cuenta tengo en producción un backend en Spring Boot con PostgreSQL.",
+        "Computer engineer working in the insurance sector since 2024 with Java, SQL and REST APIs. I come from the testing side, so I write code thinking about how it's going to break. On my own, I run a Spring Boot backend with PostgreSQL in production."
       ),
       cta: L("Hablemos", "Let's talk"),
       scroll: L("Sigue leyendo", "Keep reading"),
@@ -40,22 +40,22 @@ export function getContent(lang: Lang) {
       ),
       p1em: L("resolver problemas reales", "solve real problems"),
       p1b: L(
-        ", no por seguir una moda. Ahora trabajo con sistemas que mueven datos sensibles de millones de pólizas, sistemas que tienen que funcionar sí o sí.",
-        ", not follow a trend. Now I work with systems that move sensitive data across millions of policies — systems that simply have to work."
+        ", no por seguir una moda. Desde 2024 trabajo en el sector seguros, donde un dato mal tratado no es un bug menor: rompe informes y acaba costando dinero.",
+        ", not follow a trend. Since 2024 I've worked in the insurance sector, where a mishandled record isn't a minor bug: it breaks reports and ends up costing money."
       ),
       p2a: L("Mi terreno es el ", "My home turf is the "),
       p2accent: L("backend en Java", "Java backend"),
       p2b: L(
-        ". Trabajo con microservicios, consumo APIs REST y toco flujos asíncronos entre servicios cuando toca. He pasado por MetLife y NFQ haciendo desarrollo backend real en proyectos del sector seguros, y también por un proyecto internacional para KNAPP en Graz, Austria.",
-        ". I work with microservices, consume REST APIs and touch asynchronous flows between services when needed. I've been through MetLife and NFQ doing real backend development on insurance-sector projects, and also on an international project for KNAPP in Graz, Austria."
+        ". En MetLife he modificado lógica de negocio en Java, pruebo APIs REST antes de cada pase a producción y monté desde cero la monitorización sintética de dos aplicaciones con Elastic y Playwright. En NFQ trabajé con SQL en un Golden Record de siniestros, y en KNAPP depuré en Java el software de un almacén automatizado en Graz, Austria, durante su puesta en marcha.",
+        ". At MetLife I've modified business logic in Java, I test REST APIs before every production release, and I built synthetic monitoring for two applications from scratch with Elastic and Playwright. At NFQ I worked with SQL on a claims Golden Record, and at KNAPP I debugged, in Java, the control software of an automated warehouse in Graz, Austria, during its commissioning."
       ),
       p3: L(
-        "No me interesa acumular tecnologías por acumular. Me interesa entender por qué se usan y cuándo tienen sentido. Me obsesiona la calidad del dato, y medir lo que despliego. Vengo del backend, aunque desde hace un tiempo estoy ampliando hacia full stack — este sitio es la prueba.",
-        "I'm not interested in stacking up technologies for the sake of it. I care about understanding why they're used and when they make sense. I'm obsessed with data quality, and with measuring what I ship. I come from backend, though for a while now I've been expanding into full stack — this site is the proof."
+        "Vengo del lado de las pruebas, y eso se nota en cómo programo: pienso primero en cómo se va a romper. Fuera del trabajo, F1nalLap es mi banco de pruebas: un backend en Spring Boot con PostgreSQL, tests contra una base de datos real y CI, desplegado en producción. Busco un puesto backend a tiempo completo.",
+        "I come from the testing side, and it shows in how I code: I think first about how it's going to break. Outside work, F1nalLap is my testbed: a Spring Boot backend with PostgreSQL, tests against a real database and CI, deployed to production. I'm looking for a full-time backend role."
       ),
       signature: "— Alberto García Alcolado",
       facts: [
-        [L("Rol actual", "Current role"), L("Developer TI", "IT Developer")],
+        [L("Rol actual", "Current role"), L("Desarrollador TI", "IT Developer")],
         [L("Empresa", "Company"), "MetLife"],
         [L("Ubicación", "Location"), L("Madrid, ES", "Madrid, ES")],
         [L("Inglés", "English"), L("B2 · EOI", "B2 · Certified")],
@@ -77,18 +77,26 @@ export function getContent(lang: Lang) {
         },
         {
           n: "02",
-          title: L("Detecto y corrijo, no dejo que se acumule", "I catch and fix, I don't let it pile up"),
+          title: L("Pienso en cómo se va a romper", "I think about how it will break"),
           body: L(
-            "Reviso y corrijo bugs de forma habitual, y antes de que algo llegue a producción, pasa por revisión de código. Prefiero pillar el fallo ahí que enterarme por un ticket urgente.",
-            "I review and fix bugs regularly, and before anything reaches production, it goes through code review. I'd rather catch the issue there than find out through an urgent ticket."
+            "Vengo de las pruebas: antes de cada pase a producción valido contratos, campos, reglas de negocio y casos de error de las APIs. En mis proyectos, los tests van contra un PostgreSQL real con Testcontainers y las APIs externas se simulan con WireMock.",
+            "I come from testing: before every production release I validate API contracts, fields, business rules and error cases. In my own projects, tests run against a real PostgreSQL with Testcontainers and external APIs are mocked with WireMock."
           ),
         },
         {
           n: "03",
-          title: L("Mido lo que despliego, y sigo aprendiendo", "I measure what I ship, and keep learning"),
+          title: L("Mido lo que despliego", "I measure what I ship"),
           body: L(
-            "Monté monitorización con Elasticsearch y KPIs en Power BI para ver cómo se comporta lo que despliego. Vengo del backend, pero no me quedo solo ahí. Este portfolio lo construí con Next.js y TypeScript. Cuando algo me hace falta para trabajar mejor, lo aprendo a fondo.",
-            "I set up monitoring with Elasticsearch and KPIs in Power BI to see how what I ship behaves. I come from backend, but I don't stop there. I built this portfolio with Next.js and TypeScript. When I need something to work better, I learn it properly."
+            "Monté desde cero monitores de disponibilidad y monitores multistep en Playwright que reproducen el login de dos aplicaciones, con alertas en Elastic Observability. Ya han detectado caídas reales antes de que llegara el primer ticket.",
+            "I built availability monitors and multistep Playwright monitors from scratch that replay the login of two applications, with alerts in Elastic Observability. They've already caught real outages before the first ticket came in."
+          ),
+        },
+        {
+          n: "04",
+          title: L("Si me hace falta, lo aprendo a fondo", "If I need it, I learn it properly"),
+          body: L(
+            "Porté el simulador de estrategias de F1nalLap de TypeScript a Java y construí este portfolio con Next.js. En 2026 me he certificado con Anthropic y OpenAI en APIs de LLMs, MCP, RAG y sistemas agénticos.",
+            "I ported F1nalLap's strategy simulator from TypeScript to Java and built this portfolio with Next.js. In 2026 I earned Anthropic and OpenAI certifications on LLM APIs, MCP, RAG and agentic systems."
           ),
         },
       ],
@@ -100,86 +108,89 @@ export function getContent(lang: Lang) {
       items: [
         {
           company: "MetLife",
-          role: L("Developer TI — IT App Development", "IT Developer — IT App Development"),
+          role: L(
+            "Desarrollador de TI · APIs, observabilidad y Product Owner",
+            "IT Developer · APIs, observability and Product Owner"
+          ),
           period: L("Sep 2024 – Presente", "Sep 2024 – Present"),
           location: "Madrid",
           current: true,
           lead: L(
-            "Aplicaciones corporativas críticas del sector seguros, en producción y bajo carga real.",
-            "Business-critical insurance applications, in production and under real load."
+            "Aplicaciones corporativas del sector seguros: APIs REST, observabilidad y producto.",
+            "Corporate insurance applications: REST APIs, observability and product."
           ),
           points: [
             L(
-              "Reduje los tiempos de respuesta de aplicaciones críticas reescribiendo lógica de negocio en Java y colaborando en la optimización del procesamiento de eventos asíncronos en arquitectura de microservicios.",
-              "Cut response times on critical applications by rewriting business logic in Java and contributing to the optimization of asynchronous event processing in a microservices architecture."
+              "Monté desde cero la monitorización de dos aplicaciones web con Elastic Observability: monitores de disponibilidad y monitores multistep en Playwright que reproducen el login. Ya han detectado caídas reales.",
+              "Built monitoring for two web applications from scratch with Elastic Observability: availability monitors and multistep Playwright monitors that replay the login. They've already caught real outages."
             ),
             L(
-              "Testeé APIs REST, validando esquemas y detectando fallos e incidencias antes de su integración entre servicios, reduciendo problemas de integración.",
-              "Tested REST APIs, validating schemas and catching bugs and issues before their integration between services, reducing integration issues."
+              "Pruebo y valido 3 APIs REST con Bruno (contratos, campos, reglas de negocio y casos de error) y la integración backend–frontend de extremo a extremo antes de cada pase a producción.",
+              "I test and validate 3 REST APIs with Bruno (contracts, fields, business rules and error cases) and the end-to-end backend–frontend integration before every production release."
             ),
             L(
-              "Contribuí a la consistencia del intercambio asíncrono entre servicios distribuidos mediante pruebas de integración sobre estos flujos.",
-              "Contributed to the consistency of asynchronous exchange between distributed services through integration tests on these flows."
+              "Referente técnico en la implantación de una nueva API: resuelvo dudas entre equipos y verifico que lo entregado cumple lo acordado.",
+              "Technical point of contact for the rollout of a new API: I resolve questions between teams and verify that what's delivered matches what was agreed."
             ),
             L(
-              "Implementé KPIs automatizados en Power BI sobre SQL Server y monté monitorización con Elasticsearch, reduciendo el tiempo de detección de incidencias.",
-              "Implemented automated KPIs in Power BI over SQL Server and set up monitoring with Elasticsearch, reducing incident detection time."
+              "Product Owner de una aplicación que consume APIs REST: coordino al equipo, traslado requisitos del usuario final y priorizo el backlog en Azure DevOps (Scrum).",
+              "Product Owner of an application that consumes REST APIs: I coordinate the team, translate end-user requirements and prioritize the backlog in Azure DevOps (Scrum)."
+            ),
+            L(
+              "En prácticas (sep 2024 – jul 2025): modifiqué lógica de negocio en aplicaciones internas en Java 8/11 con Maven, automaticé con JavaScript una extracción de datos estimada en más de un día y la resolví en unas 2 horas, y monté dashboards en Power BI sobre SQL Server.",
+              "As an intern (Sep 2024 – Jul 2025): modified business logic in internal Java 8/11 applications with Maven, automated with JavaScript a data extraction estimated at over a day and finished it in about 2 hours, and built Power BI dashboards on SQL Server."
             ),
           ],
-          stack: ["Java", "Microservicios", "REST", "SQL Server", "Azure DevOps", "Elasticsearch"],
+          stack: ["Java", "APIs REST", "Bruno", "Playwright", "Elastic Observability", "SQL Server", "Azure DevOps"],
           sub: L(
-            "Empecé en prácticas (Sep 2024) y pasé a Developer TI en Feb 2026.",
-            "Started as an intern (Sep 2024) and moved to IT Developer in Feb 2026."
+            "Empecé como desarrollador de aplicaciones Java en prácticas (sep 2024) y pasé a Desarrollador de TI en feb 2026.",
+            "Started as a Java application developer intern (Sep 2024) and moved to IT Developer in Feb 2026."
           ),
         },
         {
           company: "NFQ Advisory",
-          role: L("Associate — Datos & Cumplimiento Normativo", "Associate — Data & Regulatory Compliance"),
+          role: L("Associate · Ingeniería de datos (SQL)", "Associate · Data engineering (SQL)"),
           period: L("Oct 2025 – Feb 2026", "Oct 2025 – Feb 2026"),
           location: "Madrid",
           current: false,
           lead: L(
-            "Proyecto de datos y compliance para el sector seguros.",
-            "A data and compliance project for the insurance sector."
+            "Proyecto de datos para una de las principales aseguradoras de España.",
+            "A data project for one of Spain's leading insurers."
           ),
           points: [
             L(
-              "Participé en el diseño de una estrategia Golden Record para unificar grandes volúmenes de datos críticos, reduciendo duplicidades y mejorando la calidad del dato para gestión de riesgos y reporting.",
-              "Took part in designing a Golden Record strategy to unify large volumes of critical data, reducing duplicates and improving data quality for risk management and reporting."
+              "Participé en la implantación de una estrategia de Golden Record para unificar varias tablas de siniestros en una única fuente fiable.",
+              "Took part in implementing a Golden Record strategy to unify several claims tables into a single reliable source."
             ),
             L(
-              "Optimicé pipelines ETL en SQL Server, recortando los tiempos de carga en procesos batch críticos del módulo de Siniestros.",
-              "Optimized ETL pipelines in SQL Server, cutting load times on critical batch processes in the Claims module."
-            ),
-            L(
-              "Trabajé con datos sujetos a normativa de cumplimiento, dentro de arquitecturas ya establecidas, con foco en calidad y trazabilidad para gestión de riesgos.",
-              "Worked with data subject to compliance regulations, within already-established architectures, with a focus on quality and traceability for risk management."
+              "Consultas SQL complejas sobre SQL Server para localizar, extraer y transformar datos; colaboración en la arquitectura de datos y las reglas de negocio.",
+              "Complex SQL queries on SQL Server to locate, extract and transform data; collaborated on the data architecture and business rules."
             ),
           ],
-          stack: ["SQL Server", "ETL", "Golden Record", "Compliance"],
+          stack: ["SQL Server", "SQL", "Golden Record"],
           sub: null as string | null,
         },
         {
-          company: "KNAPP Ibérica",
+          company: "KNAPP",
           role: L("Software Commissioning Engineer", "Software Commissioning Engineer"),
           period: L("Ago 2025 – Sep 2025", "Aug 2025 – Sep 2025"),
           location: L("Graz, Austria", "Graz, Austria"),
           current: false,
           lead: L(
-            "Automatización de sistemas en un proyecto internacional de alta exigencia.",
-            "Systems automation on a demanding international project."
+            "Puesta en marcha in situ del software de control de un almacén automatizado.",
+            "On-site commissioning of the control software for an automated warehouse."
           ),
           points: [
             L(
-              "Adapté y modifiqué scripts de automatización en Python según los requerimientos del proyecto, y desarrollé lógica en Java para la sincronización de sistemas en tiempo real.",
-              "Adapted and modified Python automation scripts according to project requirements, and developed Java logic for real-time system synchronization."
+              "Debugging en Java de incidencias en procesos críticos durante la puesta en marcha en producción.",
+              "Debugged issues in critical processes in Java during the production commissioning."
             ),
             L(
-              "Optimicé consultas SQL complejas y administré procesos en servidor Linux para garantizar la trazabilidad de los datos de almacenamiento.",
-              "Optimized complex SQL queries and managed server-side processes on Linux to guarantee traceability of warehouse data."
+              "Consultas SQL escritas en el momento para localizar contenedores y elevadores en tiempo real; procesos y logs en Linux; ajuste de configuración en Java y Python; Git.",
+              "Ad-hoc SQL queries to locate containers and lifts in real time; processes and logs on Linux; configuration tuning in Java and Python; Git."
             ),
           ],
-          stack: ["Python", "Java", "SQL", "Linux"],
+          stack: ["Java", "SQL", "Linux", "Python", "Git"],
           sub: null as string | null,
         },
       ],
@@ -197,16 +208,19 @@ export function getContent(lang: Lang) {
       items: [
         {
           name: "F1nalLap",
-          period: "2025",
-          tag: L("Trabajo de Fin de Grado", "Final Degree Project"),
+          period: L("2025 – Presente", "2025 – Present"),
+          tag: L("TFG ampliado · Full stack", "Extended Final Degree Project · Full stack"),
           description: L(
-            "Motor de simulación probabilística de estrategias de carrera de F1. Arquitectura modular con servicios desacoplados, consumo de APIs REST externas con tipado estricto y procesamiento de grandes volúmenes de datos históricos para generar predicciones en tiempo real.",
-            "A probabilistic simulation engine for F1 race strategies. Modular architecture with decoupled services, strictly-typed consumption of external REST APIs and processing of large volumes of historical data to generate real-time predictions."
+            "App full stack de Fórmula 1 con backend propio en producción: API REST versionada en Spring Boot sobre PostgreSQL, ingesta programada desde Jolpica con reintentos y backoff, y un simulador de estrategias determinista portado de TypeScript a Java. 26 tests de backend con Testcontainers y WireMock, 51 en el front Angular y CI en GitHub Actions.",
+            "A full-stack Formula 1 app with its own backend in production: a versioned Spring Boot REST API on PostgreSQL, scheduled ingestion from Jolpica with retries and backoff, and a deterministic strategy simulator ported from TypeScript to Java. 26 backend tests with Testcontainers and WireMock, 51 on the Angular front end, and CI on GitHub Actions."
           ),
           technologies: [
-            "TypeScript",
-            "REST APIs",
-            L("Arquitectura modular", "Modular architecture"),
+            "Java 21",
+            "Spring Boot 4",
+            "PostgreSQL",
+            "Testcontainers",
+            "Docker",
+            "Angular 19",
           ],
           github: "https://github.com/Ixo22/F1nalLap",
           demo: "https://f1nallap.netlify.app/",
@@ -256,19 +270,59 @@ export function getContent(lang: Lang) {
     skills: {
       eyebrow: L("Stack", "Stack"),
       groups: [
-        { group: L("Lenguajes", "Languages"), items: ["Java", "Python", "TypeScript", "SQL"] },
         {
-          group: L("Arquitectura", "Architecture"),
-          items: [
-            "Microservicios",
-            "REST APIs",
-            L("Sistemas distribuidos", "Distributed systems"),
-            L("Mensajería asíncrona", "Async messaging"),
-          ],
+          group: L("Lenguajes", "Languages"),
+          items: ["Java (8/11/21)", "SQL", "TypeScript", "JavaScript", "Python"],
         },
-        { group: L("Datos", "Data"), items: ["SQL Server", "MySQL", "MongoDB", "ETL", "Power BI", "Elasticsearch"] },
-        { group: "DevOps", items: ["Azure DevOps", "Git", "Docker", "Linux"] },
-        { group: L("Aprendiendo", "Learning"), items: ["Next.js", "React", "Tailwind CSS"] },
+        {
+          group: L("Backend", "Backend"),
+          items: ["Spring Boot", "Spring Data JPA", "APIs REST", "Maven", "Flyway"],
+        },
+        {
+          group: L("Datos", "Data"),
+          items: ["PostgreSQL", "SQL Server", "MySQL", "MongoDB", "Elasticsearch"],
+        },
+        {
+          group: L("Testing y observabilidad", "Testing & observability"),
+          items: ["JUnit", "Testcontainers", "WireMock", "Playwright", "Bruno", "Elastic Observability"],
+        },
+        {
+          group: L("DevOps y metodología", "DevOps & methodology"),
+          items: ["Git", "GitHub Actions", "Docker", "Linux", "Azure DevOps", "Scrum"],
+        },
+        {
+          group: L("Frontend e IA", "Frontend & AI"),
+          items: ["Angular", "Next.js · React", "APIs de LLMs (Claude, OpenAI)", "RAG · MCP"],
+        },
+      ],
+    },
+
+    certs: {
+      eyebrow: L("Formación y certificaciones", "Education & certifications"),
+      items: [
+        {
+          title: L("Grado en Ingeniería Informática", "BSc in Computer Engineering"),
+          org: L("Universidad de Burgos · 2020 – 2025", "University of Burgos · 2020 – 2025"),
+          detail: L(
+            "Incluye un curso Erasmus+ en Politechnika Gdańska (Polonia), 2022 – 2023.",
+            "Includes an Erasmus+ year at Gdańsk University of Technology (Poland), 2022 – 2023."
+          ),
+        },
+        {
+          title: "Anthropic",
+          org: "2026",
+          detail: "Building with the Claude API · MCP: Introduction y Advanced Topics · Claude Code in Action · Claude Platform 101",
+        },
+        {
+          title: "OpenAI",
+          org: "2026",
+          detail: "Design and Build Agentic Systems · Build with RAG · Evaluate AI Applications · Optimize AI App Performance · Codex",
+        },
+        {
+          title: L("Experto en Analítica y Usabilidad Web", "Web Analytics & Usability Expert"),
+          org: "Constanza Business & Protocol School",
+          detail: null as string | null,
+        },
       ],
     },
 
@@ -276,8 +330,8 @@ export function getContent(lang: Lang) {
       eyebrow: L("Contacto", "Contact"),
       heading: L("Hablemos.", "Let's talk."),
       intro: L(
-        "¿Tienes un proyecto backend entre manos? Me interesan los microservicios y todo lo que tenga que ver con datos bien tratados — escríbeme, respondo siempre.",
-        "Got a backend project in the works? I'm into microservices and anything to do with well-handled data — reach out, I always reply."
+        "Busco un puesto backend a tiempo completo con Java y Spring Boot. Si tienes una vacante o un proyecto en el que encaje, escríbeme — respondo siempre.",
+        "I'm looking for a full-time backend role with Java and Spring Boot. If you have an opening or a project where I'd fit, reach out — I always reply."
       ),
       linkedinBtn: L("Conecta en LinkedIn", "Connect on LinkedIn"),
       labels: {
@@ -336,27 +390,28 @@ export function getContent(lang: Lang) {
       kicker: L("Caso de estudio", "Case study"),
       title: "F1nalLap",
       subtitle: L(
-        "Motor de simulación probabilística de estrategias de carrera de F1.",
-        "A probabilistic simulation engine for F1 race strategies."
+        "App full stack de Fórmula 1 con backend propio en Spring Boot y PostgreSQL, en producción.",
+        "A full-stack Formula 1 app with its own Spring Boot and PostgreSQL backend, in production."
       ),
       meta: {
-        role: { label: L("Rol", "Role"), value: L("Desarrollo completo (TFG)", "Sole developer (Final Project)") },
-        year: { label: L("Año", "Year"), value: "2025" },
-        stack: { label: "Stack", value: "TypeScript · REST APIs" },
+        role: { label: L("Rol", "Role"), value: L("Desarrollo completo (TFG ampliado)", "Sole developer (extended Final Project)") },
+        year: { label: L("Año", "Year"), value: L("2025 – Presente", "2025 – Present") },
+        stack: { label: "Stack", value: "Java 21 · Spring Boot 4 · PostgreSQL · Angular 19" },
       },
       repoLabel: L("Ver código", "View code"),
       demoLabel: L("Ver demo", "Live demo"),
+      apiLabel: L("API (Swagger)", "API (Swagger)"),
       sections: {
         overview: {
           heading: L("Resumen", "Overview"),
           body: L(
             [
-              "F1nalLap es mi Trabajo de Fin de Grado: una aplicación que ofrece a los aficionados de la Fórmula 1 información en tiempo real y simulaciones de estrategia de carrera. Bajo la superficie es un motor de simulación probabilística que consume datos históricos y en vivo desde APIs REST externas y los procesa con una arquitectura modular en TypeScript.",
-              "Quise tratarlo como un sistema de verdad, no como un proyecto de clase: tipado estricto, servicios desacoplados y separación clara entre la obtención de datos, la lógica de simulación y la presentación.",
+              "F1nalLap empezó como mi Trabajo de Fin de Grado: una app en Angular con clasificaciones, calendario, resultados, comparativas y un simulador de estrategias de carrera. En la primera versión, el front llamaba directamente a una API externa y toda la lógica vivía en TypeScript.",
+              "Después del TFG lo amplié con un backend propio en Spring Boot y PostgreSQL, desplegado en Render. Ahora el front solo consume mi API REST versionada, y el simulador de estrategias vive en Java, cubierto por tests.",
             ],
             [
-              "F1nalLap is my Final Degree Project: an app that gives Formula 1 fans real-time information and race-strategy simulations. Under the hood it's a probabilistic simulation engine that consumes historical and live data from external REST APIs and processes it through a modular TypeScript architecture.",
-              "I treated it as a real system, not a class assignment: strict typing, decoupled services and a clear separation between data fetching, simulation logic and presentation.",
+              "F1nalLap started as my Final Degree Project: an Angular app with standings, calendar, results, comparisons and a race-strategy simulator. In the first version the front end called an external API directly and all the logic lived in TypeScript.",
+              "After the project I extended it with my own Spring Boot and PostgreSQL backend, deployed on Render. Now the front end only consumes my versioned REST API, and the strategy simulator lives in Java, covered by tests.",
             ]
           ),
         },
@@ -364,82 +419,84 @@ export function getContent(lang: Lang) {
           heading: L("El reto", "The challenge"),
           body: L(
             [
-              "Los datos de Fórmula 1 viven repartidos en varias APIs externas, con formatos distintos, huecos y latencias que no controlo. El reto no era \"pintar datos\": era construir un sistema que siguiera dando una respuesta coherente aunque la fuente fallara, llegara incompleta o cambiara de forma.",
-              "Y por encima, generar una simulación de estrategia que fuera creíble a partir de grandes volúmenes de datos históricos, sin que la app se volviera lenta o inconsistente.",
+              "Depender en cada visita de una API externa que no controlo significaba heredar sus límites de peticiones, sus caídas y sus cambios de formato. Además, la lógica de negocio importante —el simulador— estaba en el navegador, sin tests y difícil de evolucionar.",
+              "El objetivo era mover los datos y la lógica a un backend propio: ingerir los datos una vez, guardarlos de forma consistente y servirlos con una API estable, sin perder ninguna funcionalidad del front.",
             ],
             [
-              "Formula 1 data lives across several external APIs, with different formats, gaps and latencies I don't control. The challenge wasn't \"rendering data\": it was building a system that kept giving a coherent answer even when a source failed, arrived incomplete or changed shape.",
-              "On top of that, generating a believable strategy simulation from large volumes of historical data, without the app becoming slow or inconsistent.",
+              "Depending on an external API I don't control on every visit meant inheriting its rate limits, outages and format changes. On top of that, the important business logic —the simulator— ran in the browser, untested and hard to evolve.",
+              "The goal was to move data and logic into my own backend: ingest the data once, store it consistently and serve it through a stable API, without losing any front-end functionality.",
             ]
           ),
         },
         architecture: {
           heading: L("Arquitectura y decisiones", "Architecture & decisions"),
           intro: L(
-            "Estructuré el proyecto en módulos desacoplados para aislar cada responsabilidad:",
-            "I structured the project into decoupled modules to isolate each responsibility:"
+            "Las piezas principales del backend y por qué están así:",
+            "The main backend pieces and why they're built this way:"
           ),
           points: L(
             [
-              "Capa de acceso a datos que encapsula cada API externa detrás de una interfaz tipada, para que el resto del sistema no dependa de su formato concreto.",
-              "Tipado estricto de extremo a extremo en TypeScript: los datos externos se validan y normalizan antes de entrar en la lógica de negocio.",
-              "Motor de simulación independiente de la fuente de datos y de la UI, lo que permite probarlo de forma aislada.",
-              "Procesamiento de datos históricos separado del flujo en tiempo real para no penalizar la respuesta del usuario.",
+              "API REST versionada de clasificaciones, resultados, circuitos y estrategias, con errores en formato ProblemDetail, documentación en Swagger y caché HTTP por temporada.",
+              "Ingesta programada desde la API de Jolpica con paginación, control de ritmo y reintentos con backoff ante respuestas 429 y 5xx. Cada temporada se escribe en una sola transacción, de forma idempotente: repetir la ingesta no duplica datos.",
+              "Simulador de estrategias portado de TypeScript a Java: combina stints legales de 2 y 3 paradas, modela la degradación por compuesto y fase, y es determinista con semilla, así que se puede testear.",
+              "Esquema gestionado con Flyway y Docker Compose para levantar todo el entorno en local.",
+              "26 tests de backend (JUnit, Testcontainers con un Postgres real y WireMock para la API externa) y 51 en el front, con CI en GitHub Actions para ambos y despliegue continuo en Render y Netlify.",
             ],
             [
-              "A data-access layer that wraps each external API behind a typed interface, so the rest of the system doesn't depend on its concrete format.",
-              "End-to-end strict typing in TypeScript: external data is validated and normalized before entering the business logic.",
-              "A simulation engine independent of the data source and the UI, which makes it testable in isolation.",
-              "Historical-data processing separated from the real-time flow so it doesn't penalize the user's response time.",
+              "A versioned REST API for standings, results, circuits and strategies, with ProblemDetail errors, Swagger documentation and per-season HTTP caching.",
+              "Scheduled ingestion from the Jolpica API with pagination, rate control and retries with backoff on 429 and 5xx responses. Each season is written in a single transaction, idempotently: re-running the ingestion never duplicates data.",
+              "A strategy simulator ported from TypeScript to Java: it combines legal 2- and 3-stop stints, models degradation by compound and phase, and is deterministic with a seed, so it's testable.",
+              "Schema managed with Flyway, and Docker Compose to spin up the whole environment locally.",
+              "26 backend tests (JUnit, Testcontainers with a real Postgres and WireMock for the external API) and 51 on the front end, with CI on GitHub Actions for both and continuous deployment to Render and Netlify.",
             ]
           ),
         },
         challenges: {
           heading: L("Dificultades y aprendizajes", "Difficulties & lessons"),
           intro: L(
-            "Estas son las partes que de verdad me hicieron crecer como desarrollador:",
-            "These are the parts that genuinely made me grow as a developer:"
+            "Estas son las partes que más me hicieron pensar:",
+            "These are the parts that made me think the most:"
           ),
           items: L(
             [
               {
-                title: "Datos externos poco fiables",
-                body: "Las APIs no siempre devolvían lo esperado: campos ausentes, formatos cambiantes y caídas puntuales. Aprendí a no confiar nunca en la forma del dato externo y a normalizar y validar todo en la frontera del sistema.",
+                title: "Una fuente externa que no controlo",
+                body: "La API de Jolpica limita las peticiones y a veces falla. Diseñar la ingesta con control de ritmo, reintentos con backoff y escritura idempotente por temporada me enseñó a tratar la red como algo que va a fallar, no como una excepción.",
               },
               {
-                title: "Mantener la coherencia en tiempo real",
-                body: "Coordinar datos en vivo con el procesamiento histórico sin bloqueos ni estados inconsistentes me obligó a pensar con cuidado el flujo asíncrono y el manejo de errores.",
+                title: "Portar lógica sin romperla",
+                body: "Pasar el simulador de TypeScript a Java sin cambiar su comportamiento exigía poder compararlos. Hacerlo determinista con semilla fue la clave: con la misma entrada, el mismo resultado, y eso se puede fijar en tests.",
               },
               {
-                title: "Domar la complejidad con tipos",
-                body: "A medida que crecía, el tipado estricto pasó de ser una exigencia a ser mi red de seguridad: refactorizar dejó de dar miedo.",
+                title: "Tests que se parecen a producción",
+                body: "Con Testcontainers los tests de backend corren contra un PostgreSQL real, no contra una base de datos en memoria que esconda diferencias. Con WireMock simulo la API externa, incluidos sus errores.",
               },
             ],
             [
               {
-                title: "Unreliable external data",
-                body: "The APIs didn't always return what I expected: missing fields, shifting formats and occasional outages. I learned never to trust the shape of external data and to normalize and validate everything at the system boundary.",
+                title: "An external source I don't control",
+                body: "The Jolpica API rate-limits requests and sometimes fails. Designing ingestion with rate control, retries with backoff and idempotent per-season writes taught me to treat the network as something that will fail, not as an exception.",
               },
               {
-                title: "Keeping real-time coherence",
-                body: "Coordinating live data with historical processing without blocking or inconsistent state forced me to think carefully about async flow and error handling.",
+                title: "Porting logic without breaking it",
+                body: "Moving the simulator from TypeScript to Java without changing its behaviour required being able to compare them. Making it deterministic with a seed was the key: same input, same output, and that can be pinned down in tests.",
               },
               {
-                title: "Taming complexity with types",
-                body: "As it grew, strict typing went from a requirement to my safety net: refactoring stopped being scary.",
+                title: "Tests that look like production",
+                body: "With Testcontainers the backend tests run against a real PostgreSQL, not an in-memory database that hides differences. With WireMock I simulate the external API, errors included.",
               },
             ]
           ),
           note: L(
-            "Iré ampliando esta sección con los problemas concretos que fui resolviendo durante el desarrollo.",
-            "I'll keep expanding this section with the specific problems I solved during development."
+            "Iré ampliando esta sección según el proyecto evolucione.",
+            "I'll keep expanding this section as the project evolves."
           ),
         },
         outcome: {
           heading: L("Resultado", "Outcome"),
           body: L(
-            "F1nalLap terminó siendo un sistema desplegado y funcional que defendí como Trabajo de Fin de Grado. Más allá de la nota, me dejó algo más valioso: la convicción de que la calidad del dato y diseñar pensando en el fallo no son lujos, sino la base de cualquier cosa que merezca la pena construir.",
-            "F1nalLap ended up as a deployed, working system that I defended as my Final Degree Project. Beyond the grade, it left me something more valuable: the conviction that data quality and designing for failure aren't luxuries, but the foundation of anything worth building."
+            "F1nalLap está en producción: front en Netlify, API en Render con PostgreSQL y documentación pública en Swagger. Pasó de ser un proyecto de fin de grado a un backend que mantengo como cualquier sistema real, con tests contra una base de datos de verdad, CI y despliegue continuo.",
+            "F1nalLap is in production: front end on Netlify, API on Render with PostgreSQL and public Swagger documentation. It went from a final degree project to a backend I maintain like any real system, with tests against a real database, CI and continuous deployment."
           ),
         },
       },

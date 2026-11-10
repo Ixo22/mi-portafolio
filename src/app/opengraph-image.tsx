@@ -93,7 +93,7 @@ export default function OpengraphImage() {
             fontFamily: "monospace",
           }}
         >
-          <span>Java · Microservicios · Sector Seguros</span>
+          <span>Java · Spring Boot · Sector Seguros</span>
           <span>aalbeerto</span>
         </div>
       </div>

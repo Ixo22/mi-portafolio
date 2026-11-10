@@ -397,6 +397,32 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ─── FORMACIÓN Y CERTIFICACIONES ──────────────────────── */}
+        <section className="py-24">
+          <Eyebrow>{c.certs.eyebrow}</Eyebrow>
+          <div className="space-y-px">
+            {c.certs.items.map((cert, i) => (
+              <Reveal key={cert.title} delay={i * 80}>
+                <div className="grid md:grid-cols-12 gap-2 md:gap-8 py-6 border-t border-line">
+                  <div className="md:col-span-4">
+                    <h3 className="font-serif text-lg text-[#f3f0ea]">
+                      {cert.title}
+                    </h3>
+                    <p className="text-faint text-xs font-mono mt-1">
+                      {cert.org}
+                    </p>
+                  </div>
+                  {cert.detail && (
+                    <p className="md:col-span-8 text-muted text-[15px] leading-relaxed">
+                      {cert.detail}
+                    </p>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
         {/* ─── CONTACTO ─────────────────────────────────────────── */}
         <section id="contacto" className="py-28 scroll-mt-20">
           <Eyebrow>{c.contact.eyebrow}</Eyebrow>

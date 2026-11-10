@@ -39,6 +39,7 @@ export default function F1nalLapCaseStudy() {
   const s = cs.sections;
   const repo = "https://github.com/Ixo22/F1nalLap";
   const demo = "https://f1nallap.netlify.app/";
+  const api = "https://f1nallap-api.onrender.com/swagger-ui.html";
 
   return (
     <div className="relative z-10 font-sans">
@@ -85,6 +86,14 @@ export default function F1nalLapCaseStudy() {
               className="text-sm text-[#e8e4dd] link-underline inline-flex items-center gap-1.5"
             >
               {cs.demoLabel} <ArrowUpRight size={15} />
+            </a>
+            <a
+              href={api}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-[#e8e4dd] link-underline inline-flex items-center gap-1.5"
+            >
+              {cs.apiLabel} <ArrowUpRight size={15} />
             </a>
             <a
               href={repo}

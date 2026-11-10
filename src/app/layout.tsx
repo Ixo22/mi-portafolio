@@ -25,13 +25,13 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Alberto García Alcolado · Backend Developer Java & Microservicios",
+  title: "Alberto García Alcolado · Backend Developer Java & Spring Boot",
   description:
-    "Portfolio de Alberto García Alcolado — Backend Developer especializado en microservicios Java, APIs REST y arquitecturas de datos en el sector seguros. Madrid.",
+    "Portfolio de Alberto García Alcolado — Backend Developer Java con experiencia en APIs REST, SQL y observabilidad en el sector seguros, y un backend propio en Spring Boot y PostgreSQL en producción. Madrid.",
   keywords: [
     "Backend Developer",
     "Java",
-    "Microservicios",
+    "Spring Boot",
     "APIs REST",
     "Sector Seguros",
     "Madrid",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alberto García Alcolado · Backend Developer",
     description:
-      "Backend Developer Java especializado en microservicios, arquitecturas distribuidas y compliance normativo. Sector seguros.",
+      "Backend Developer Java: APIs REST, SQL, Spring Boot y PostgreSQL. Sector seguros.",
     type: "website",
     locale: "es_ES",
     url: SITE_URL,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Alberto García Alcolado · Backend Developer",
     description:
-      "Backend Developer Java especializado en microservicios y arquitecturas de datos. Sector seguros.",
+      "Backend Developer Java: APIs REST, SQL, Spring Boot y PostgreSQL. Sector seguros.",
   },
 };
 
@@ -72,10 +72,10 @@ const personJsonLd = {
   },
   knowsAbout: [
     "Java",
-    "Microservicios",
+    "Spring Boot",
     "REST APIs",
     "SQL Server",
-    "Sistemas distribuidos",
+    "PostgreSQL",
     "Azure DevOps",
   ],
   knowsLanguage: ["es", "en"],
